@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* Extend Tailwind CSS v4 Theme config */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  --color-gov-blue: #1e40af;
+  --color-gov-blue-hover: #1d4ed8;
+  --color-gov-blue-light: #eff6ff;
+  --color-accent-orange: #f97316;
+  --color-compliance-green: #10b981;
+  --color-compliance-green-light: #ecfdf5;
+  --color-violation-red: #ef4444;
+  --color-violation-red-light: #fef2f2;
+}
+
+/* Base custom styles extending Tailwind */
+html, body {
+  min-height: 100vh;
+  background-color: var(--color-slate-50);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.dark html, .dark body {
+  background-color: #090d16;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Laser scanning animation */
+@keyframes laser-scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+.animate-laser {
+  animation: laser-scan 3s linear infinite;
+}
+
+/* Circular SVG dashboard dial progress */
+.fg-circle {
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+/* Packaging mockup vector card themes */
+.package-card-mockup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.oats-mock {
+  background-color: #fdfaf2;
+  border: 3px solid #15803d;
+}
+
+.masala-mock {
+  background-color: #fff5f5;
+  border: 3px solid #b91c1c;
+}
+
+.cream-mock {
+  background-color: #faf5ff;
+  border: 3px solid #7c3aed;
+}
+
+/* Bounding box dynamic hover states */
+.bounding-box {
+  position: absolute;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 3px;
+  color: white;
+  transition: all 0.15s ease;
+}
+
+.bounding-box::after {
+  content: attr(data-field-name);
+  position: absolute;
+  top: -14px;
+  left: -2px;
+  background-color: inherit;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 2px 2px 0 0;
+  font-size: 0.5rem;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.bounding-box.mrp { border-color: #8b5cf6; background-color: rgba(139, 92, 246, 0.12); }
+.bounding-box.qty { border-color: #10b981; background-color: rgba(16, 185, 129, 0.12); }
+.bounding-box.date { border-color: #f59e0b; background-color: rgba(245, 158, 11, 0.12); }
+.bounding-box.mfg { border-color: #3b82f6; background-color: rgba(59, 130, 246, 0.12); }
+
+.bounding-box:hover, .bounding-box.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1.02);
+  z-index: 30;
+}
+
+.bounding-box.mrp:hover, .bounding-box.mrp.active { background-color: rgba(139, 92, 246, 0.25); }
+.bounding-box.qty:hover, .bounding-box.qty.active { background-color: rgba(16, 185, 129, 0.25); }
+.bounding-box.date:hover, .bounding-box.date.active { background-color: rgba(245, 158, 11, 0.25); }
+.bounding-box.mfg:hover, .bounding-box.mfg.active { background-color: rgba(59, 130, 246, 0.25); }
