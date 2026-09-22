@@ -24,14 +24,28 @@ export default function ReportModal({ record, onClose, addToast }) {
     });
   };
 
-  // Generate mock summaries based on product keys
+  // Generate mock summaries based on product keys & automated audit reports
   const getAiSummaryText = () => {
+    if (record.crossLabelReport?.isShrinkflation) {
+      return `CRITICAL ANOMALY: Cross-label consistency analysis identified potential shrinkflation. ${record.crossLabelReport.comparisonSummary} Scanned confidence-weighted score: ${record.score}%.`;
+    }
+    if (record.tamperZone?.detected) {
+      return `DEFACEMENT LOCALIZED: Automated thermal heatmap identified localized physical tampering (${record.tamperZone.type}) on field "${record.tamperZone.targetField}" with ${record.tamperZone.confidence}% confidence. Overall confidence-weighted score: ${record.score}%.`;
+    }
+    if (record.productKey === 'tamil_oil' || record.selectedLanguage === 'tam') {
+      return 'Tamil Regional Language Label verified: Successfully recognized mandatory statutory declarations in Tamil (அதிகபட்ச சில்லறை விலை, நிகர அளவு, தயாரிப்பு தேதி). All Rule 6 clauses confirmed compliant with bilingual Legal Metrology provisions.';
+    }
+    if (record.productKey === 'hindi_ghee' || record.selectedLanguage === 'hin') {
+      return 'Hindi Regional Language Label verified: Successfully recognized mandatory statutory declarations in Hindi (अधिकतम खुदरा मूल्य, शुद्ध मात्रा, निर्माण तिथि). All Rule 6 clauses confirmed compliant under National Language Metrology provisions.';
+    }
     if (record.productKey === 'oats') {
-      return 'The OCR engine detected all 8 mandatory label fields with an average layout parsing confidence of 94%. Net weight, MRP, manufacturer, and consumer details were located, validated, and confirmed to meet regulatory standards.';
+      return 'The OCR engine detected all mandatory label fields with an average layout parsing confidence of 94%. Net weight, MRP, manufacturer, and consumer details were located, validated, and confirmed to meet regulatory standards.';
     } else if (record.productKey === 'masala') {
       return 'Layout segmentation isolated 8 items. Found critical FSSAI licensing errors. License number contains alphabetic characters (invalid format). Helpline email tag is missing. Legal metrology compliance rating stands at 75%.';
+    } else if (isCompliant) {
+      return `All Rule 6 mandatory declarations verified compliant with confidence-weighted score of ${record.score}%. Cross-label consistency matrix verified against manufacturer master registration.`;
     } else {
-      return 'AI parsing detected layout defects. Product capacity printed in non-metric units ("oz" instead of metric grams or ml). Price tag (MRP) is completely absent. Legal metrology compliance rating is 50%.';
+      return `AI parsing detected packaging defects. Confidence-weighted compliance score stands at ${record.score}%. Identified ${record.violationsCount || 'multiple'} mandatory statutory non-conformities under Legal Metrology Rules, 2011.`;
     }
   };
 
@@ -107,7 +121,41 @@ export default function ReportModal({ record, onClose, addToast }) {
               </h3>
               <div className="violations-cards-list flex flex-col gap-2.5">
                 
-                {/* Specific failures checking */}
+                {/* Tamper Heatmap Infringement Card */}
+                {record.tamperZone?.detected && (
+                  <div className="violation-card-item bg-red-50 dark:bg-red-950/20 border border-red-300 dark:border-red-900/40 rounded-xl p-3 flex gap-3">
+                    <AlertTriangle className="text-red-600 flex-shrink-0" size={16} />
+                    <div className="violation-details">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-bold text-red-700">Tamper Anomaly Localized ({record.tamperZone.confidence}% Confidence)</h4>
+                        <span className="text-[9px] bg-red-200 text-red-900 font-extrabold px-1.5 py-0.2 rounded font-mono">
+                          {record.tamperZone.severity}
+                        </span>
+                      </div>
+                      <p className="text-slate-600 dark:text-slate-300 leading-normal mt-0.5">
+                        {record.tamperZone.description} Target Field: <strong className="font-mono">{record.tamperZone.targetField}</strong>. Thermal heatmap highlights localized physical strike-through or label alteration violating Rule 6 authenticity provisions.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Shrinkflation / Cross-Label Infringement Card */}
+                {record.crossLabelReport?.isShrinkflation && (
+                  <div className="violation-card-item bg-red-50 dark:bg-red-950/20 border border-red-300 dark:border-red-900/40 rounded-xl p-3 flex gap-3">
+                    <AlertTriangle className="text-red-600 flex-shrink-0" size={16} />
+                    <div className="violation-details">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-bold text-red-700">Deceptive Downsizing / Shrinkflation Detected</h4>
+                        <span className="text-[9px] bg-red-200 text-red-900 font-extrabold px-1.5 py-0.2 rounded font-mono">
+                          {record.crossLabelReport.netQtyDeltaPercent}% NET QTY
+                        </span>
+                      </div>
+                      <p className="text-slate-600 dark:text-slate-300 leading-normal mt-0.5">
+                        {record.crossLabelReport.comparisonSummary} Scanned net quantity contravenes registered consumer volume standards.
+                      </p>
+                    </div>
+                  </div>
+                )}
                 {(record.productKey === 'masala' || record.fields.fssaiLicense === '1234F567891234') && (
                   <>
                     <div className="violation-card-item bg-red-50 dark:bg-red-950/20 border border-red-200/40 dark:border-red-900/30 rounded-xl p-3 flex gap-3">

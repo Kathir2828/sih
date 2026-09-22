@@ -10,7 +10,42 @@ export default function NoticeModal({ record, onClose, addToast }) {
 
   if (!record) return null;
 
+  const getViolationsList = () => {
+    const list = [];
+    if (record.tamperZone?.detected) {
+      list.push(`[RULE 6 DEFACEMENT] - Physical packaging tampering / defacement localized on field "${record.tamperZone.targetField}" (${record.tamperZone.confidence}% confidence). Inked strike-through or sticker alteration detected.`);
+    }
+    if (record.crossLabelReport?.isShrinkflation) {
+      list.push(`[CROSS-LABEL SHRINKFLATION] - Deceptive net quantity shrinkage detected: Net weight dropped from ${record.crossLabelReport.historicalMaster?.netQty || 'approved master'} to ${record.fields?.netQty || 'current'} (${record.crossLabelReport.netQtyDeltaPercent}% decrease).`);
+    }
+    if (record.fields) {
+      if (!record.fields.mrp || record.fields.mrp.toLowerCase().includes('missing')) {
+        list.push(`[RULE 6(1)(e)] - Failure to declare Maximum Retail Price (MRP) inclusive of all taxes in statutory format.`);
+      }
+      if (!record.fields.netQty || record.fields.netQty.toLowerCase().includes('missing') || record.fields.netQty.includes('oz')) {
+        list.push(`[RULE 6(1)(c) & RULE 13] - Net quantity missing or declared in illegal non-metric units.`);
+      }
+      if (!record.fields.mfgDate || record.fields.mfgDate.toLowerCase().includes('missing') || record.fields.mfgDate.toLowerCase().includes('defaced')) {
+        list.push(`[RULE 6(1)(d)] - Date/month and year of manufacture or packaging is missing, illegible, or defaced.`);
+      }
+      if (!record.fields.manufacturerName || record.fields.manufacturerName.toLowerCase().includes('missing')) {
+        list.push(`[RULE 6(1)(a)] - Failure to declare complete name and registered address of manufacturer or packer.`);
+      }
+      if (!record.fields.customerCare || record.fields.customerCare.toLowerCase().includes('missing')) {
+        list.push(`[RULE 6(1)(g)] - Absence of mandatory consumer grievance care redressal telephone and email helpline.`);
+      }
+    }
+    if (list.length === 0) {
+      list.push(`[RULE 6(1)(a)] - Failure to declare Complete Name & Address of Manufacturer / Packer on the package label.`);
+      list.push(`[RULE 6(1)(g)] - Absence of Consumer Care telephone number and contact details for consumer grievance redressal.`);
+    }
+    return list;
+  };
+
+  const violations = getViolationsList();
+
   const handleCopyText = () => {
+    const formattedViolations = violations.map((v, i) => `${i + 1}. ${v}`).join('\n');
     const text = `
 GOVERNMENT OF INDIA
 DEPARTMENT OF CONSUMER AFFAIRS
@@ -25,13 +60,14 @@ Date of Issue: ${currentDate}
 Inspected Premises: ${premiseName}
 Inspecting Officer: ${inspectorName}
 
-SUBJECT: Contravention of mandatory declarations on packaged commodity: "${record.name || 'Crunchy Masala Chips'}"
+SUBJECT: Contravention of mandatory declarations on packaged commodity: "${record.name || 'BRITANNIA Good Day Butter Cookies'}"
 
 Sir / Madam,
 During the inspection conducted under the provisions of the Legal Metrology Act, 2009, the aforementioned packaged commodity was examined using the MetroScan AI Enforcement System and the following statutory contraventions were observed:
 
-1. [CONTRAVENTION: Rule 6(1)(a)] - Failure to declare Complete Name & Address of Manufacturer / Packer on the package label.
-2. [CONTRAVENTION: Rule 6(1)(g)] - Absence of Consumer Care telephone number and contact details for consumer grievance redressal.
+${formattedViolations}
+
+Confidence-Weighted Audit Score: ${record.score || 60}%
 
 You are hereby directed to SHOW CAUSE within FIFTEEN (15) DAYS from receipt of this notice as to why penal proceedings under Section 36 of the Legal Metrology Act, 2009 (attracting compoundable fine of up to ₹25,000/- for the first offence) should not be initiated against you.
 
@@ -148,13 +184,12 @@ Legal Metrology Inspector, Govt. of India
               </p>
               
               <div className="bg-red-50/60 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-lg p-3 my-1">
-                <ol className="list-decimal pl-4 flex flex-col gap-1 text-[10px] font-semibold text-red-900 dark:text-red-300">
-                  <li>
-                    <strong>Rule 6(1)(a) Violation:</strong> The name and complete address of the manufacturer or packer was <strong>MISSING</strong> from the packaging display.
-                  </li>
-                  <li>
-                    <strong>Rule 6(1)(g) Violation:</strong> Mandatory Consumer Care telephone number, name, and address for customer grievance redressal was <strong>NOT DECLARED</strong>.
-                  </li>
+                <ol className="list-decimal pl-4 flex flex-col gap-1.5 text-[10px] font-semibold text-red-900 dark:text-red-300">
+                  {violations.map((violation, idx) => (
+                    <li key={idx} className="leading-snug">
+                      {violation}
+                    </li>
+                  ))}
                 </ol>
               </div>
 

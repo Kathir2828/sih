@@ -163,6 +163,8 @@ html, body, #root {
 .oats-mock    { background-color: #f0fdf4; border: 2px solid #15803d; }
 .masala-mock  { background-color: #fff5f5; border: 2px solid #b91c1c; }
 .cream-mock   { background-color: #faf5ff; border: 2px solid #7c3aed; }
+.oil-mock     { background-color: #fffbeb; border: 2px solid #d97706; }
+.ghee-mock    { background-color: #fefce8; border: 2px solid #ca8a04; }
 
 /* ============================================================
    BOUNDING BOX ANNOTATIONS
