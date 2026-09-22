@@ -84,30 +84,43 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
       {/* Header section */}
       <div className="view-header flex justify-between items-start mb-6">
         <div>
-          <h1 className="view-title font-display text-2xl font-extrabold tracking-tight">Legal Metrology Compliance Overview</h1>
-          <p className="view-subtitle text-slate-500 text-xs mt-1">AI-assisted scanner dashboard for checking Legal Metrology Packaged Commodity Rules, 2011.</p>
+          <h1 className="view-title font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Legal Metrology Compliance Overview
+          </h1>
+          <p className="view-subtitle text-slate-500 text-xs mt-1">
+            National Enforcement Dashboard for Legal Metrology (Packaged Commodities) Rules, 2011 • Dept of Consumer Affairs
+          </p>
         </div>
         <button 
           onClick={() => navigateToView('scanner')}
-          className="btn btn-primary bg-blue-700 hover:bg-blue-600 text-white font-semibold text-xs px-4 py-2 rounded-lg shadow flex items-center gap-2"
+          className="btn btn-primary bg-[#0f2942] hover:bg-[#183e63] text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors"
         >
-          <PlusCircle size={16} /> New Product Scan
+          <PlusCircle size={16} className="text-amber-400" /> New Product Scan
         </button>
       </div>
 
       {/* Hero Interactive Upload Banner */}
-      <div className="hero-card bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white p-8 rounded-2xl grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 mb-7 shadow-lg relative overflow-hidden">
-        <div className="hero-content flex flex-col justify-center gap-4 z-10">
-          <span className="hero-tag bg-white/20 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider w-fit">Smart India Hackathon SIH26034</span>
-          <h2 className="font-display text-2xl lg:text-3xl font-extrabold leading-tight">Verify Packaged Products Instantly Using OCR & AI Compliance Checks</h2>
-          <p className="text-white/80 text-xs leading-relaxed max-w-lg">Upload a product package image, photograph labels, or supply a PDF to instantly run compliance checks on mandatory declarations (MRP, FSSAI, Net Weight, Manufacturer, and more).</p>
+      <div className="hero-card bg-[#0f2942] text-white p-7 rounded-2xl grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 mb-7 shadow-xs border border-slate-800 relative overflow-hidden">
+        <div className="hero-content flex flex-col justify-center gap-3.5 z-10">
+          <div className="flex items-center gap-2">
+            <span className="hero-tag bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider w-fit">
+              Government of India • SIH26034
+            </span>
+            <span className="text-[10px] font-mono text-blue-200">PCR 2011 Rule 6 Compliant</span>
+          </div>
+          <h2 className="font-display text-xl lg:text-2xl font-bold leading-tight text-white">
+            Verify Packaged Products Instantly with On-Device Tesseract.js OCR
+          </h2>
+          <p className="text-slate-300 text-xs leading-relaxed max-w-lg">
+            Upload packaging display panels, capture webcam snapshots, or process 100-page catalogs to automatically detect MRP, Net Quantity, Date of Manufacture, Manufacturer Address, and Consumer Care details under Section 36 of Legal Metrology Act, 2009.
+          </p>
           
-          <div className="hero-actions flex gap-3 mt-2">
-            <button onClick={handleUploadClick} className="btn bg-white text-blue-900 font-bold text-xs px-4 py-2.5 rounded-lg shadow hover:bg-slate-100 flex items-center gap-2">
-              <UploadCloud size={16} /> Upload Image / PDF
+          <div className="hero-actions flex flex-wrap gap-2.5 mt-1">
+            <button onClick={handleUploadClick} className="btn bg-white hover:bg-slate-100 text-[#0f2942] font-bold text-xs px-4 py-2 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors">
+              <UploadCloud size={15} /> Upload Packaging Image
             </button>
-            <button onClick={() => loadDemoProduct('oats')} className="btn border border-white/40 text-white font-semibold text-xs px-4 py-2.5 rounded-lg hover:bg-white/10 flex items-center gap-2">
-              <Camera size={16} /> Camera Live Scan
+            <button onClick={() => navigateToView('scanner')} className="btn border border-white/30 text-white font-semibold text-xs px-4 py-2 rounded-lg hover:bg-white/10 flex items-center gap-2 cursor-pointer transition-colors">
+              <Camera size={15} className="text-amber-400" /> Open Scanner Console
             </button>
             <input type="file" id="real-file-input-react" className="hidden" accept="image/*,.pdf" onChange={handleFileChange} />
           </div>
@@ -115,23 +128,49 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
         <div className="hero-interactive flex items-center justify-center z-10">
           <div 
             onClick={handleUploadClick}
-            className="drag-drop-zone w-full h-44 border-2 border-dashed border-white/40 hover:border-white rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-md flex flex-col items-center justify-center text-center p-5 cursor-pointer transition-all duration-200"
+            className="drag-drop-zone w-full h-40 border-2 border-dashed border-white/30 hover:border-amber-400 rounded-xl bg-white/5 hover:bg-white/10 flex flex-col items-center justify-center text-center p-4 cursor-pointer transition-colors"
           >
-            <UploadCloud className="drag-icon text-white/80 mb-3" size={32} />
-            <p className="text-xs font-bold">Drag & Drop packaging label here</p>
-            <span className="text-[10px] text-white/60 mt-1">Supports PNG, JPG, JPEG, and PDF (max 10MB)</span>
+            <UploadCloud className="drag-icon text-amber-400 mb-2" size={28} />
+            <p className="text-xs font-bold text-white">Drop packaging display panel here</p>
+            <span className="text-[10px] text-slate-300 mt-0.5">High-Resolution JPEG, PNG, WEBP, or PDF (Auto-OCR)</span>
           </div>
         </div>
       </div>
 
       {/* Demo Package Templates selector carousel */}
-      <div className="demo-selector-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-7 shadow-sm transition-colors">
-        <div className="demo-header flex items-center gap-2 mb-4">
-          <Sparkles className="text-orange-500 animate-pulse" size={18} />
-          <h3 className="text-xs font-extrabold text-slate-850 dark:text-slate-100 uppercase tracking-wider">Interactive Demo Mode: Select a package template to run a simulated AI OCR Scan</h3>
+      <div className="demo-selector-card bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-7 shadow-xs">
+        <div className="demo-header flex items-center gap-2 mb-3">
+          <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+          <h3 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            Pre-Calibrated Test Samples (Instant Legal Metrology Rule 6 Verification)
+          </h3>
         </div>
         <div className="demo-grid grid grid-cols-1 md:grid-cols-3 gap-5">
           
+          <div onClick={() => loadDemoProduct('biscuit')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
+            <div className="demo-product-thumbnail w-28 bg-[#fdf6e2] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight border-r border-slate-200">
+              <div className="flex justify-between font-bold text-blue-800">
+                <span>GOOD DAY</span>
+                <span className="bg-emerald-600 text-white px-1 rounded-[2px] text-[6px]">Compliant</span>
+              </div>
+              <div className="text-center font-display my-1">
+                <span className="font-extrabold text-[9px] block text-blue-900">Butter Cookies</span>
+                <span className="text-[6px] text-slate-500">Biscuit</span>
+              </div>
+              <div className="border-t border-slate-200 pt-1 text-[6px] text-slate-600 flex flex-col gap-0.5">
+                <span>Net Wt: <strong>34.5g</strong></span>
+                <span>MRP: <strong>₹5.00</strong></span>
+              </div>
+            </div>
+            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1">
+              <div>
+                <h4 className="text-xs font-bold leading-tight">Britannia Good Day Butter Cookies</h4>
+                <p className="text-[10px] text-slate-500 mt-1 leading-normal">Fully compliant packaging design with all mandatory declarations.</p>
+              </div>
+              <div className="demo-score bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">100% Score</div>
+            </div>
+          </div>
+
           <div onClick={() => loadDemoProduct('oats')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
             <div className="demo-product-thumbnail w-28 bg-[#fdf6e2] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight">
               <div className="flex justify-between font-bold text-[#15803d]">

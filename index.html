@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Verify legal metrology and FSSAI packaging declarations instantly using AI layout parsed OCR scanner." />
-    <title>ComplianceScan AI - Legal Metrology Packaged Commodity Scanner</title>
+    <meta name="description" content="MetroScan Compliance Portal - Field Inspector tool for packaged commodities compliance with Legal Metrology (Packaged Commodities) Rules, 2011." />
+    <title>MetroScan Compliance Portal - Legal Metrology Rules 2011</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body class="font-sans antialiased text-slate-900 dark:text-slate-100">
+  <body class="font-sans antialiased text-slate-900 bg-slate-50">
+    <script>
+      // Enforce Light Theme: remove dark class and clear any saved dark preference
+      document.documentElement.classList.remove('dark');
+      try { localStorage.removeItem('metroscan_theme'); } catch(e){}
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

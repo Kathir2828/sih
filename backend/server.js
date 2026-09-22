@@ -75,6 +75,98 @@ let scanHistory = [
 
 // Product mock configs mapping OCR bounding box coordinates and extracted values
 const productMockConfigs = {
+  snack: {
+    key: 'snack',
+    name: "Crunchy Masala Chips (Snack Packet)",
+    category: "food",
+    bgClass: "snack-mock",
+    confidence: 91,
+    fssaiMandatory: true,
+    boxes: [
+      { id: 'batchNumber', top: '14px', left: '12px', width: '110px', height: '18px', name: 'Batch: MC-2026-B8', class: 'date' },
+      { id: 'productName', top: '38px', left: '12px', width: '276px', height: '44px', name: 'Product Name', class: 'mfg' },
+      { id: 'netQty', top: '228px', left: '12px', width: '276px', height: '22px', name: 'Net Qty: 150g', class: 'qty' },
+      { id: 'mrp', top: '254px', left: '12px', width: '276px', height: '22px', name: 'MRP: ₹45.00', class: 'mrp' },
+      { id: 'mfgDate', top: '280px', left: '12px', width: '276px', height: '22px', name: 'Mfg Date: 12/08/2026', class: 'date' },
+      { id: 'manufacturerName', top: '306px', left: '12px', width: '276px', height: '24px', name: 'Mfr: [NOT FOUND]', class: 'missing-box' },
+      { id: 'customerCare', top: '334px', left: '12px', width: '276px', height: '24px', name: 'Helpline: [NOT FOUND]', class: 'missing-box' }
+    ],
+    fields: {
+      productName: "Crunchy Masala Chips",
+      netQty: "150g",
+      mrp: "₹45.00",
+      mfgDate: "12/08/2026",
+      expiryDate: "12/02/2027",
+      manufacturerName: "",
+      customerCare: "",
+      fssaiLicense: "10022011000452",
+      batchNumber: "MC-2026-B8"
+    }
+  },
+  biscuit: {
+    key: 'biscuit',
+    name: "BRITANNIA Good Day Butter Cookies (Full Back Wrapper)",
+    category: "food",
+    bgClass: "biscuit-mock",
+    confidence: 98,
+    fssaiMandatory: true,
+    barcode: "8901063370050",
+    boxes: [
+      { id: 'productName', top: '10px', left: '10px', width: '280px', height: '24px', name: 'Product: BRITANNIA Good Day Butter Cookies', class: 'mfg' },
+      { id: 'netQty', top: '40px', left: '10px', width: '280px', height: '20px', name: 'Net Wt: 30.2g + 4.3g EXTRA# = 34.5g', class: 'qty' },
+      { id: 'mrp', top: '65px', left: '10px', width: '280px', height: '22px', name: 'MRP: ₹ 5.00 (INCL., OF ALL TAXES) Rs. 0.14 per g', class: 'mrp' },
+      { id: 'mfgDate', top: '92px', left: '10px', width: '135px', height: '20px', name: 'PKD: 26/08/26', class: 'date' },
+      { id: 'expiryDate', top: '92px', left: '150px', width: '140px', height: '20px', name: 'Use By: 25/01/27', class: 'date' },
+      { id: 'batchNumber', top: '115px', left: '10px', width: '280px', height: '18px', name: 'Lot: B08269L M/C 606 16:02', class: 'date' },
+      { id: 'manufacturerName', top: '136px', left: '10px', width: '280px', height: '28px', name: 'Mfr: BRITANNIA INDUSTRIES LTD., KOLKATA-700017', class: 'mfg' },
+      { id: 'customerCare', top: '168px', left: '10px', width: '280px', height: '28px', name: 'Care: 1-800-4254449 / feedback@britindia.com', class: 'mfg' },
+      { id: 'fssaiLicense', top: '200px', left: '10px', width: '280px', height: '18px', name: 'FSSAI: Lic. No. 10015043001129', class: 'qty' },
+      { id: 'barcode', top: '222px', left: '10px', width: '280px', height: '18px', name: 'EAN-13 Barcode: 8901063370050', class: 'qty' }
+    ],
+    fields: {
+      productName: "BRITANNIA Good Day Butter Cookies",
+      netQty: "30.2g + 4.3g EXTRA# = 34.5g",
+      mrp: "MRP ₹ 5.00 (INCL., OF ALL TAXES) Rs. 0.14 per g",
+      mfgDate: "26/08/26",
+      expiryDate: "25/01/27",
+      manufacturerName: "BRITANNIA INDUSTRIES LTD., 5/1 A HUNGERFORD STREET, KOLKATA-700017, WEST BENGAL",
+      customerCare: "Executive, Consumer Care Cell, Ph: 1-800-4254449 / 1-800-30004530, Email: feedback@britindia.com",
+      fssaiLicense: "Lic. No. 10015043001129 BRITANNIA INDUSTRIES LTD.",
+      batchNumber: "B08269L M/C 606 16:02",
+      barcode: "8901063370050"
+    }
+  },
+  struck: {
+    key: 'struck',
+    name: "BRITANNIA Good Day (Struck-Out / Defaced Date Offence)",
+    category: "food",
+    bgClass: "biscuit-mock",
+    confidence: 94,
+    fssaiMandatory: true,
+    barcode: "8901063370050",
+    boxes: [
+      { id: 'productName', top: '10px', left: '10px', width: '280px', height: '24px', name: 'Product: BRITANNIA Good Day Butter Cookies', class: 'mfg' },
+      { id: 'netQty', top: '40px', left: '10px', width: '280px', height: '20px', name: 'Net Wt: 30.2g + 4.3g EXTRA# = 34.5g', class: 'qty' },
+      { id: 'mrp', top: '65px', left: '10px', width: '280px', height: '22px', name: 'MRP: ₹ 5.00 (INCL. TAXES)', class: 'mrp' },
+      { id: 'mfgDate', top: '92px', left: '10px', width: '280px', height: '22px', name: 'PKD/USE BY: [DEFACED/STRUCK OUT WITH INK]', class: 'missing-box' },
+      { id: 'batchNumber', top: '118px', left: '10px', width: '280px', height: '18px', name: 'Lot: B08269L M/C 606 16:02', class: 'date' },
+      { id: 'manufacturerName', top: '140px', left: '10px', width: '280px', height: '24px', name: 'Mfr: BRITANNIA INDUSTRIES LTD., KOLKATA', class: 'mfg' },
+      { id: 'customerCare', top: '168px', left: '10px', width: '280px', height: '24px', name: 'Care: 1-800-4254449 / feedback@britindia.com', class: 'mfg' },
+      { id: 'barcode', top: '196px', left: '10px', width: '280px', height: '20px', name: 'EAN-13 Barcode: 8901063370050 (GS1 Verified)', class: 'qty' }
+    ],
+    fields: {
+      productName: "BRITANNIA Good Day Butter Cookies",
+      netQty: "30.2g + 4.3g EXTRA# = 34.5g",
+      mrp: "MRP ₹ 5.00 (INCL., OF ALL TAXES) Rs. 0.14 per g",
+      mfgDate: "",
+      expiryDate: "",
+      manufacturerName: "BRITANNIA INDUSTRIES LTD., 5/1 A HUNGERFORD STREET, KOLKATA-700017, WEST BENGAL",
+      customerCare: "Executive, Consumer Care Cell, Ph: 1-800-4254449 / 1-800-30004530, Email: feedback@britindia.com",
+      fssaiLicense: "Lic. No. 10015043001129 BRITANNIA INDUSTRIES LTD.",
+      batchNumber: "B08269L M/C 606 16:02",
+      barcode: "8901063370050"
+    }
+  },
   oats: {
     key: 'oats',
     name: "Nature's Harvest Oats",
@@ -170,17 +262,52 @@ const productMockConfigs = {
 app.post('/api/scan', (req, res) => {
   const { templateKey } = req.body;
   
-  // Select a preset template, or return oats as default if none matched
-  const selectedConfig = productMockConfigs[templateKey] || productMockConfigs.oats;
+  // Select a preset template, default to 'snack' which matches the prompt scenario
+  const selectedConfig = productMockConfigs[templateKey] || productMockConfigs.snack;
   
   // Return configuration including mock bounding boxes & parsed OCR values
   res.json({
     success: true,
+    templateKey: selectedConfig.key,
+    name: selectedConfig.name,
     ocrConfidence: selectedConfig.confidence,
     bgClass: selectedConfig.bgClass,
     fssaiMandatory: selectedConfig.fssaiMandatory,
     boxes: selectedConfig.boxes,
     fields: selectedConfig.fields
+  });
+});
+
+// API: Save inspection audit record to Firebase Cloud Firestore simulation
+app.post('/api/firebase/save', (req, res) => {
+  const auditData = req.body;
+  const docId = `FS-${Math.floor(100000 + Math.random() * 900000)}`;
+  const timestamp = new Date().toISOString();
+  
+  const firestoreRecord = {
+    id: auditData.id || `AUD-${Math.floor(10000 + Math.random() * 90000)}-2026`,
+    firestoreDocId: docId,
+    collection: 'metroscan-audits',
+    createdAt: timestamp,
+    syncedAt: timestamp,
+    syncedBy: auditData.inspector || 'Inspector S. Verma (LM-DL-2026-042)',
+    status: auditData.status || 'Non-Compliant',
+    score: auditData.score ?? 60,
+    name: auditData.name || 'Crunchy Masala Chips',
+    violationsCount: auditData.violationsCount ?? 2,
+    fields: auditData.fields || {}
+  };
+
+  // Also update in-memory scan history
+  scanHistory = scanHistory.filter(h => h.name !== firestoreRecord.name);
+  scanHistory.unshift(firestoreRecord);
+
+  res.json({
+    success: true,
+    firestoreDocId: docId,
+    collection: 'metroscan-audits',
+    message: `Audit successfully committed to Firebase Cloud Firestore collection 'metroscan-audits'`,
+    record: firestoreRecord
   });
 });
 

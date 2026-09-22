@@ -1,132 +1,298 @@
 @import "tailwindcss";
 
-/* Extend Tailwind CSS v4 Theme config */
+/* Extend Tailwind CSS v4 Theme config - Official Government Portal Design System */
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', sans-serif;
-  
+
+  --color-gov-navy: #0f2942;
+  --color-gov-navy-light: #183e63;
   --color-gov-blue: #1e40af;
   --color-gov-blue-hover: #1d4ed8;
   --color-gov-blue-light: #eff6ff;
-  --color-accent-orange: #f97316;
-  --color-compliance-green: #10b981;
+
+  --color-saffron: #ea580c;
+  --color-saffron-light: #fff7ed;
+
+  --color-compliance-green: #059669;
   --color-compliance-green-light: #ecfdf5;
-  --color-violation-red: #ef4444;
+  --color-compliance-green-border: #a7f3d0;
+
+  --color-violation-red: #dc2626;
   --color-violation-red-light: #fef2f2;
+  --color-violation-red-border: #fecaca;
+
+  --color-warning-amber: #d97706;
+  --color-warning-amber-light: #fffbeb;
+  --color-warning-amber-border: #fde68a;
 }
 
-/* Base custom styles extending Tailwind */
-html, body {
+/* ============================================================
+   BASE - fully light, no dark overrides
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
   min-height: 100vh;
-  background-color: var(--color-slate-50);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dark html, .dark body {
-  background-color: #090d16;
-}
-
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
-}
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-}
-
-/* Laser scanning animation */
-@keyframes laser-scan {
-  0% { top: 0%; }
-  50% { top: 100%; }
-  100% { top: 0%; }
-}
-.animate-laser {
-  animation: laser-scan 3s linear infinite;
-}
-
-/* Circular SVG dashboard dial progress */
-.fg-circle {
-  transition: stroke-dashoffset 0.8s ease;
-}
-
-/* Packaging mockup vector card themes */
-.package-card-mockup {
+/* ============================================================
+   GOVERNMENT TRICOLOR STRIPE
+   ============================================================ */
+.tricolor-stripe {
+  background: linear-gradient(90deg, #ea580c 0%, #ea580c 33.3%, #ffffff 33.3%, #ffffff 66.6%, #16a34a 66.6%, #16a34a 100%);
+  height: 3px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+}
+
+/* ============================================================
+   SCROLLBARS - clean light style
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ============================================================
+   LAYOUT WRAPPERS
+   ============================================================ */
+.app-container {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #0f172a;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #ffffff !important;
+  border-right: 1px solid #e2e8f0 !important;
+}
+
+/* Main Content Area */
+.main-content {
+  background-color: #f8fafc;
+}
+
+/* ============================================================
+   OFFICIAL GOVERNMENT CARD
+   ============================================================ */
+.gov-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gov-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   SCANNER VIEWPORT (packaging inspection frame)
+   ============================================================ */
+.scanner-viewport {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Corner brackets */
+.corner-bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #1e40af;
+  pointer-events: none;
+  z-index: 20;
+}
+.corner-tl { top: 8px; left: 8px; border-top: 3px solid; border-left: 3px solid; }
+.corner-tr { top: 8px; right: 8px; border-top: 3px solid; border-right: 3px solid; }
+.corner-bl { bottom: 8px; left: 8px; border-bottom: 3px solid; border-left: 3px solid; }
+.corner-br { bottom: 8px; right: 8px; border-bottom: 3px solid; border-right: 3px solid; }
+
+/* Scanning animation bar */
+@keyframes admin-scan-line {
+  0%   { top: 0%;  opacity: 0.8; }
+  50%  { top: 96%; opacity: 1;   }
+  100% { top: 0%;  opacity: 0.8; }
+}
+.scan-indicator-bar {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2563eb, transparent);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+  animation: admin-scan-line 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* ============================================================
+   PACKAGE MOCK CARDS
+   ============================================================ */
+.package-card-mockup {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
   padding: 16px;
   justify-content: space-between;
   position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
 }
+.snack-mock   { background-color: #fffaf0; border: 2px solid #ea580c; }
+.biscuit-mock { background-color: #ffffff;  border: 2px solid #0284c7; }
+.oats-mock    { background-color: #f0fdf4; border: 2px solid #15803d; }
+.masala-mock  { background-color: #fff5f5; border: 2px solid #b91c1c; }
+.cream-mock   { background-color: #faf5ff; border: 2px solid #7c3aed; }
 
-.oats-mock {
-  background-color: #fdfaf2;
-  border: 3px solid #15803d;
-}
-
-.masala-mock {
-  background-color: #fff5f5;
-  border: 3px solid #b91c1c;
-}
-
-.cream-mock {
-  background-color: #faf5ff;
-  border: 3px solid #7c3aed;
-}
-
-/* Bounding box dynamic hover states */
+/* ============================================================
+   BOUNDING BOX ANNOTATIONS
+   ============================================================ */
 .bounding-box {
   position: absolute;
-  border-width: 2px;
+  border-width: 1.5px;
   border-style: solid;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  font-size: 0.55rem;
-  font-weight: 700;
-  padding: 1px 3px;
-  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 1px 4px;
+  color: #1e293b;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   transition: all 0.15s ease;
 }
-
 .bounding-box::after {
   content: attr(data-field-name);
   position: absolute;
-  top: -14px;
-  left: -2px;
-  background-color: inherit;
-  color: white;
-  padding: 1px 4px;
-  border-radius: 2px 2px 0 0;
-  font-size: 0.5rem;
+  top: -16px; left: -1.5px;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-size: 0.55rem;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.bounding-box.mrp { border-color: #8b5cf6; background-color: rgba(139, 92, 246, 0.12); }
-.bounding-box.qty { border-color: #10b981; background-color: rgba(16, 185, 129, 0.12); }
-.bounding-box.date { border-color: #f59e0b; background-color: rgba(245, 158, 11, 0.12); }
-.bounding-box.mfg { border-color: #3b82f6; background-color: rgba(59, 130, 246, 0.12); }
+.bounding-box.mrp         { border-color: #6366f1; background-color: rgba(99,102,241,0.08); }
+.bounding-box.mrp::after  { background-color: #4338ca; }
+.bounding-box.qty         { border-color: #059669; background-color: rgba(5,150,105,0.08); }
+.bounding-box.qty::after  { background-color: #047857; }
+.bounding-box.date        { border-color: #d97706; background-color: rgba(217,119,6,0.08); }
+.bounding-box.date::after { background-color: #b45309; }
+.bounding-box.mfg         { border-color: #2563eb; background-color: rgba(37,99,235,0.08); }
+.bounding-box.mfg::after  { background-color: #1d4ed8; }
+.bounding-box.missing-box {
+  border-color: #dc2626;
+  border-style: dashed;
+  background-color: rgba(220,38,38,0.08);
+}
+.bounding-box.missing-box::after { background-color: #b91c1c; }
 
 .bounding-box:hover, .bounding-box.active {
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  transform: scale(1.02);
+  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   z-index: 30;
 }
 
-.bounding-box.mrp:hover, .bounding-box.mrp.active { background-color: rgba(139, 92, 246, 0.25); }
-.bounding-box.qty:hover, .bounding-box.qty.active { background-color: rgba(16, 185, 129, 0.25); }
-.bounding-box.date:hover, .bounding-box.date.active { background-color: rgba(245, 158, 11, 0.25); }
-.bounding-box.mfg:hover, .bounding-box.mfg.active { background-color: rgba(59, 130, 246, 0.25); }
+/* ============================================================
+   LEGAL NOTICE DOCUMENT
+   ============================================================ */
+.legal-notice-document {
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px solid #0f172a;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* ============================================================
+   CIRCULAR COMPLIANCE CHART
+   ============================================================ */
+.fg-circle {
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+/* ============================================================
+   STAT CARDS & PANELS - Enforce white/light backgrounds
+   ============================================================ */
+.stat-card,
+.panel-card,
+.demo-selector-card,
+.hero-card {
+  background: #ffffff;
+}
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+.search-bar {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+.search-bar:focus-within {
+  background-color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+/* ============================================================
+   NOTIFICATION / DROPDOWN MENUS
+   ============================================================ */
+.dropdown-menu {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* ============================================================
+   AI CHAT WINDOW
+   ============================================================ */
+.ai-assistant-window {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+.chat-body {
+  background-color: #f8fafc !important;
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast {
+  background: #ffffff !important;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   ACTIVITY TIMELINE
+   ============================================================ */
+.activity-timeline {
+  border-left-color: #e2e8f0;
+}
+.timeline-content {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
