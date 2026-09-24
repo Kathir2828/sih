@@ -117,20 +117,20 @@ export default function BatchPdfModal({ onClose, addToast }) {
 
   return (
     <div className="modal-overlay fixed inset-0 bg-slate-950/85 backdrop-blur-md z-[2000] flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="modal-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+      <div className="modal-card bg-white border border-slate-200 rounded-2xl shadow-2xl w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-900/60">
+        <div className="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-blue-700 text-white flex items-center justify-center shadow">
               <Layers size={22} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 uppercase tracking-wider">
+                <h2 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
                   PDF Catalog Batch Inspector (10 Pages)
                 </h2>
-                <span className="bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400 font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">
+                <span className="bg-blue-100 text-blue-700 font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">
                   Multi-Page AI Vision
                 </span>
               </div>
@@ -140,22 +140,22 @@ export default function BatchPdfModal({ onClose, addToast }) {
 
           <div className="flex items-center gap-2">
             {!isProcessing && (
-              <div className="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-lg">
+              <div className="flex bg-slate-200 p-1 rounded-lg">
                 <button 
                   onClick={() => setViewMode('table')}
-                  className={`text-xs px-3 py-1 rounded-md font-bold transition-all ${viewMode === 'table' ? 'bg-blue-600 text-white shadow' : 'text-slate-600 dark:text-slate-400'}`}
+                  className={`text-xs px-3 py-1 rounded-md font-bold transition-all ${viewMode === 'table' ? 'bg-blue-600 text-white shadow' : 'text-slate-600'}`}
                 >
                   Summary Table
                 </button>
                 <button 
                   onClick={() => setViewMode('inspector')}
-                  className={`text-xs px-3 py-1 rounded-md font-bold transition-all ${viewMode === 'inspector' ? 'bg-blue-600 text-white shadow' : 'text-slate-600 dark:text-slate-400'}`}
+                  className={`text-xs px-3 py-1 rounded-md font-bold transition-all ${viewMode === 'inspector' ? 'bg-blue-600 text-white shadow' : 'text-slate-600'}`}
                 >
                   Page Inspector
                 </button>
               </div>
             )}
-            <button onClick={onClose} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg">
+            <button onClick={onClose} className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg">
               <X size={20} />
             </button>
           </div>
@@ -166,12 +166,12 @@ export default function BatchPdfModal({ onClose, addToast }) {
           
           {/* Processing Loading Bar */}
           {isProcessing ? (
-            <div className="p-8 border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50 dark:bg-slate-900/50 flex flex-col items-center justify-center text-center gap-4 my-8">
-              <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+            <div className="p-8 border border-slate-200 rounded-2xl bg-slate-50 flex flex-col items-center justify-center text-center gap-4 my-8">
+              <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">
                 <Cpu size={28} className="animate-spin duration-[3000ms]" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                <h3 className="text-sm font-bold text-slate-900">
                   Parsing 10-Page PDF Document Catalog...
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
@@ -179,14 +179,14 @@ export default function BatchPdfModal({ onClose, addToast }) {
                 </p>
               </div>
               
-              <div className="w-full max-w-md bg-slate-200 dark:bg-slate-800 h-3 rounded-full overflow-hidden p-0.5">
+              <div className="w-full max-w-md bg-slate-200 h-3 rounded-full overflow-hidden p-0.5">
                 <div 
                   className="bg-gradient-to-r from-blue-700 via-blue-500 to-emerald-500 h-full rounded-full transition-all duration-75"
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
 
-              <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
+              <span className="font-mono text-xs font-bold text-blue-700">
                 {progress}% Complete ({Math.round((progress / 100) * 10)} of 10 Pages Parsed)
               </span>
             </div>
@@ -197,35 +197,35 @@ export default function BatchPdfModal({ onClose, addToast }) {
                 <div className="flex flex-col gap-4 animate-in fade-in duration-200">
                   
                   {/* Page Navigation Bar */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 bg-blue-950/40 border border-blue-800/40 p-3 rounded-xl">
+                  <div className="flex flex-wrap items-center justify-between gap-3 bg-blue-50/80 border border-blue-200 p-3 rounded-xl">
                     <div className="flex items-center gap-2">
                       <button 
                         onClick={() => setSelectedPageNum(prev => Math.max(1, prev - 1))}
                         disabled={selectedPageNum === 1}
-                        className="btn bg-slate-800 hover:bg-slate-700 text-white px-2.5 py-1.5 rounded-lg disabled:opacity-50 flex items-center gap-1 font-bold text-xs"
+                        className="btn bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-2.5 py-1.5 rounded-lg disabled:opacity-50 flex items-center gap-1 font-bold text-xs shadow-2xs transition-colors cursor-pointer"
                       >
                         <ChevronLeft size={16} /> Prev Page
                       </button>
-                      <span className="font-mono font-extrabold text-blue-400 px-3 text-sm">
+                      <span className="font-mono font-extrabold text-blue-800 px-3 text-sm">
                         PAGE {selectedPage.page} OF 10
                       </span>
                       <button 
                         onClick={() => setSelectedPageNum(prev => Math.min(10, prev + 1))}
                         disabled={selectedPageNum === 10}
-                        className="btn bg-slate-800 hover:bg-slate-700 text-white px-2.5 py-1.5 rounded-lg disabled:opacity-50 flex items-center gap-1 font-bold text-xs"
+                        className="btn bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-2.5 py-1.5 rounded-lg disabled:opacity-50 flex items-center gap-1 font-bold text-xs shadow-2xs transition-colors cursor-pointer"
                       >
                         Next Page <ChevronRight size={16} />
                       </button>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-slate-400 font-medium">Jump to Page:</span>
+                      <span className="text-slate-600 font-medium">Jump to Page:</span>
                       <div className="flex gap-1">
                         {batchResults.map(p => (
                           <button
                             key={p.page}
                             onClick={() => setSelectedPageNum(p.page)}
-                            className={`w-7 h-7 rounded-lg font-bold font-mono text-xs transition-all ${selectedPageNum === p.page ? 'bg-blue-600 text-white shadow' : (p.status === 'Compliant' ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' : 'bg-red-950 text-red-300 border border-red-800')}`}
+                            className={`w-7 h-7 rounded-lg font-bold font-mono text-xs transition-all cursor-pointer ${selectedPageNum === p.page ? 'bg-blue-600 text-white shadow' : (p.status === 'Compliant' ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 hover:bg-emerald-100' : 'bg-red-50 text-red-700 border border-red-300 hover:bg-red-100')}`}
                           >
                             {p.page}
                           </button>
@@ -239,69 +239,69 @@ export default function BatchPdfModal({ onClose, addToast }) {
                     
                     {/* Left: Page Artwork Render with Bounding Boxes */}
                     <div className="flex flex-col gap-2 items-center">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
                         Page {selectedPage.page} PDF Visual Scan & Bounding Box HUD
                       </span>
 
                       {/* Mock Page Canvas */}
-                      <div className="w-full max-w-sm h-96 rounded-2xl border-2 border-blue-600/60 bg-gradient-to-b from-slate-900 to-slate-950 p-4 flex flex-col justify-between relative shadow-xl overflow-hidden select-none">
+                      <div className="w-full max-w-sm h-96 rounded-2xl border-2 border-blue-200 bg-gradient-to-b from-blue-50/40 via-white to-slate-50 p-4 flex flex-col justify-between relative shadow-md overflow-hidden select-none">
                         
                         {/* Page Header Tag */}
-                        <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                          <span className="bg-blue-700/80 text-white text-[8px] font-extrabold px-2 py-0.5 rounded tracking-wider uppercase">
+                        <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                          <span className="bg-blue-700 text-white text-[8px] font-extrabold px-2 py-0.5 rounded tracking-wider uppercase">
                             PDF CATALOG PAGE #{selectedPage.page}
                           </span>
-                          <span className="text-[8px] font-mono text-slate-400">Batch Ref: {selectedPage.batchNo}</span>
+                          <span className="text-[8px] font-mono text-slate-500">Batch Ref: {selectedPage.batchNo}</span>
                         </div>
 
                         {/* Product Title */}
                         <div className="text-center my-2">
-                          <h3 className="text-base font-black uppercase text-white tracking-wide drop-shadow">
+                          <h3 className="text-base font-black uppercase text-slate-900 tracking-wide">
                             {selectedPage.name}
                           </h3>
-                          <span className="text-[9px] text-amber-300 font-semibold">{selectedPage.category}</span>
+                          <span className="text-[9px] text-amber-700 font-semibold">{selectedPage.category}</span>
                         </div>
 
                         {/* Product Artwork Illustration */}
-                        <div className="my-auto py-4 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center justify-center text-center">
-                          <Sparkles size={32} className="text-amber-400 mb-1" />
-                          <span className="text-[9px] text-slate-300 font-bold uppercase">Packaged Commodity Artwork</span>
+                        <div className="my-auto py-4 bg-slate-100/80 rounded-xl border border-slate-200 flex flex-col items-center justify-center text-center">
+                          <Sparkles size={32} className="text-amber-500 mb-1" />
+                          <span className="text-[9px] text-slate-600 font-bold uppercase">Packaged Commodity Artwork</span>
                         </div>
 
                         {/* Page Declarations Zone */}
-                        <div className="bg-black/50 backdrop-blur-xs rounded-xl p-3 border border-white/15 flex flex-col gap-1.5 text-[9px]">
+                        <div className="bg-white rounded-xl p-3 border border-slate-200 shadow-2xs flex flex-col gap-1.5 text-[9px]">
                           <div className="flex justify-between font-bold">
-                            <span className="text-slate-300">Net Quantity:</span>
-                            <span className="text-emerald-300 font-mono font-extrabold">{selectedPage.netQty}</span>
+                            <span className="text-slate-600">Net Quantity:</span>
+                            <span className="text-emerald-700 font-mono font-extrabold">{selectedPage.netQty}</span>
                           </div>
                           <div className="flex justify-between font-bold">
-                            <span className="text-slate-300">MRP (Incl. taxes):</span>
-                            <span className="text-purple-300 font-mono font-extrabold">{selectedPage.mrp}</span>
+                            <span className="text-slate-600">MRP (Incl. taxes):</span>
+                            <span className="text-purple-700 font-mono font-extrabold">{selectedPage.mrp}</span>
                           </div>
-                          <div className="flex justify-between text-[8px] text-slate-400">
-                            <span>Mfg: <strong className="text-amber-300">{selectedPage.mfgDate}</strong></span>
+                          <div className="flex justify-between text-[8px] text-slate-500">
+                            <span>Mfg: <strong className="text-amber-700">{selectedPage.mfgDate}</strong></span>
                             <span>Exp: <strong>{selectedPage.expiryDate}</strong></span>
                           </div>
                           
                           {/* Manufacturer info status */}
-                          <div className="mt-1 pt-1 border-t border-white/10 text-[8px]">
+                          <div className="mt-1 pt-1 border-t border-slate-100 text-[8px]">
                             {selectedPage.manufacturer ? (
-                              <span className="text-slate-300">Mfr: {selectedPage.manufacturer}</span>
+                              <span className="text-slate-600">Mfr: {selectedPage.manufacturer}</span>
                             ) : (
-                              <span className="text-red-400 font-bold italic">⚠️ Rule 6(1)(a) Violation: Manufacturer Address Missing</span>
+                              <span className="text-red-600 font-bold italic">⚠️ Rule 6(1)(a) Violation: Manufacturer Address Missing</span>
                             )}
                           </div>
                         </div>
 
                         {/* Overlay Bounding Boxes HUD */}
-                        <div className="absolute top-14 left-4 right-4 h-12 border-2 border-purple-500/70 rounded bg-purple-500/10 pointer-events-none flex items-start p-1 text-[7px] text-purple-300 font-bold">
+                        <div className="absolute top-14 left-4 right-4 h-12 border-2 border-purple-600/70 rounded bg-purple-500/10 pointer-events-none flex items-start p-1 text-[7px] text-purple-800 font-bold">
                           MRP & Brand Region
                         </div>
-                        <div className="absolute bottom-16 left-4 right-4 h-16 border-2 border-emerald-500/70 rounded bg-emerald-500/10 pointer-events-none flex items-start p-1 text-[7px] text-emerald-300 font-bold">
+                        <div className="absolute bottom-16 left-4 right-4 h-16 border-2 border-emerald-600/70 rounded bg-emerald-500/10 pointer-events-none flex items-start p-1 text-[7px] text-emerald-800 font-bold">
                           Net Qty & Mfg Date Stamp Region
                         </div>
                         {selectedPage.status === 'Non-Compliant' && (
-                          <div className="absolute bottom-4 left-4 right-4 h-8 border-2 border-dashed border-red-500 rounded bg-red-500/20 pointer-events-none flex items-center justify-center text-[7px] text-red-300 font-extrabold animate-pulse">
+                          <div className="absolute bottom-4 left-4 right-4 h-8 border-2 border-dashed border-red-600 rounded bg-red-500/15 pointer-events-none flex items-center justify-center text-[7px] text-red-700 font-extrabold animate-pulse">
                             ⚠️ MISSING MANUFACTURER / HELPLINE ZONE
                           </div>
                         )}
@@ -311,12 +311,12 @@ export default function BatchPdfModal({ onClose, addToast }) {
 
                     {/* Right: Evaluated Rule 6 Declaration Checklist */}
                     <div className="flex flex-col gap-3">
-                      <div className={`p-4 rounded-xl border flex justify-between items-center ${selectedPage.status === 'Compliant' ? 'bg-emerald-950/30 border-emerald-500/60' : 'bg-red-950/30 border-red-500/60'}`}>
+                      <div className={`p-4 rounded-xl border flex justify-between items-center ${selectedPage.status === 'Compliant' ? 'bg-emerald-50/90 border-emerald-200' : 'bg-red-50/90 border-red-200'}`}>
                         <div>
                           <span className={`text-xs font-black uppercase tracking-wider px-2.5 py-1 rounded ${selectedPage.status === 'Compliant' ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white'}`}>
                             PAGE {selectedPage.page} STATUS: {selectedPage.status.toUpperCase()}
                           </span>
-                          <p className="text-[11px] text-slate-300 mt-2 font-medium">
+                          <p className="text-[11px] text-slate-700 mt-2 font-medium">
                             {selectedPage.status === 'Compliant' 
                               ? 'All 5 mandatory declarations present and compliant with Legal Metrology Rules, 2011.'
                               : `Failed Rule 6 validation. Found ${selectedPage.violations.length} statutory infractions.`
@@ -324,8 +324,8 @@ export default function BatchPdfModal({ onClose, addToast }) {
                           </p>
                         </div>
                         <div className="text-right">
-                          <span className="text-[10px] text-slate-400 uppercase font-bold block">Score</span>
-                          <span className={`font-display font-extrabold text-2xl ${selectedPage.status === 'Compliant' ? 'text-emerald-400' : 'text-red-400'}`}>
+                          <span className="text-[10px] text-slate-500 uppercase font-bold block">Score</span>
+                          <span className={`font-display font-extrabold text-2xl ${selectedPage.status === 'Compliant' ? 'text-emerald-700' : 'text-red-700'}`}>
                             {selectedPage.score}%
                           </span>
                         </div>
@@ -333,63 +333,63 @@ export default function BatchPdfModal({ onClose, addToast }) {
 
                       {/* Evaluated Clauses */}
                       <div className="flex flex-col gap-2">
-                        <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+                        <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <div>
-                            <span className="font-bold text-slate-200">1. Maximum Retail Price (MRP)</span>
-                            <span className="text-[10px] text-slate-400 block font-mono">Rule 6(1)(e)</span>
+                            <span className="font-bold text-slate-800">1. Maximum Retail Price (MRP)</span>
+                            <span className="text-[10px] text-slate-500 block font-mono">Rule 6(1)(e)</span>
                           </div>
-                          <span className="font-mono font-extrabold text-purple-400 bg-purple-950/60 px-2 py-1 rounded border border-purple-800">
+                          <span className="font-mono font-extrabold text-purple-700 bg-purple-50 px-2 py-1 rounded border border-purple-200">
                             {selectedPage.mrp}
                           </span>
                         </div>
 
-                        <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+                        <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <div>
-                            <span className="font-bold text-slate-200">2. Net Weight / Quantity</span>
-                            <span className="text-[10px] text-slate-400 block font-mono">Rule 6(1)(c) & Rule 13</span>
+                            <span className="font-bold text-slate-800">2. Net Weight / Quantity</span>
+                            <span className="text-[10px] text-slate-500 block font-mono">Rule 6(1)(c) & Rule 13</span>
                           </div>
-                          <span className="font-mono font-extrabold text-emerald-400 bg-emerald-950/60 px-2 py-1 rounded border border-emerald-800">
+                          <span className="font-mono font-extrabold text-emerald-700 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">
                             {selectedPage.netQty}
                           </span>
                         </div>
 
-                        <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center">
+                        <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <div>
-                            <span className="font-bold text-slate-200">3. Date of Manufacture</span>
-                            <span className="text-[10px] text-slate-400 block font-mono">Rule 6(1)(d)</span>
+                            <span className="font-bold text-slate-800">3. Date of Manufacture</span>
+                            <span className="text-[10px] text-slate-500 block font-mono">Rule 6(1)(d)</span>
                           </div>
-                          <span className="font-mono font-extrabold text-amber-400 bg-amber-950/60 px-2 py-1 rounded border border-amber-800">
+                          <span className="font-mono font-extrabold text-amber-700 bg-amber-50 px-2 py-1 rounded border border-amber-200">
                             {selectedPage.mfgDate}
                           </span>
                         </div>
 
-                        <div className={`p-2.5 rounded-lg border flex justify-between items-center ${selectedPage.manufacturer ? 'bg-slate-900 border-slate-800' : 'bg-red-950/40 border-red-800'}`}>
+                        <div className={`p-2.5 rounded-lg border flex justify-between items-center ${selectedPage.manufacturer ? 'bg-slate-50 border-slate-200' : 'bg-red-50 border-red-200'}`}>
                           <div>
-                            <span className="font-bold text-slate-200">4. Manufacturer Credentials</span>
-                            <span className="text-[10px] text-slate-400 block font-mono">Rule 6(1)(a)</span>
+                            <span className="font-bold text-slate-800">4. Manufacturer Credentials</span>
+                            <span className="text-[10px] text-slate-500 block font-mono">Rule 6(1)(a)</span>
                           </div>
                           {selectedPage.manufacturer ? (
-                            <span className="font-bold text-emerald-400 text-[10px] max-w-xs text-right truncate">
+                            <span className="font-bold text-emerald-700 text-[10px] max-w-xs text-right truncate">
                               {selectedPage.manufacturer}
                             </span>
                           ) : (
-                            <span className="font-bold text-red-400 text-[10px] bg-red-950 px-2 py-0.5 rounded border border-red-800">
+                            <span className="font-bold text-red-700 text-[10px] bg-red-100 px-2 py-0.5 rounded border border-red-300">
                               MISSING (VIOLATION)
                             </span>
                           )}
                         </div>
 
-                        <div className={`p-2.5 rounded-lg border flex justify-between items-center ${selectedPage.customerCare ? 'bg-slate-900 border-slate-800' : 'bg-red-950/40 border-red-800'}`}>
+                        <div className={`p-2.5 rounded-lg border flex justify-between items-center ${selectedPage.customerCare ? 'bg-slate-50 border-slate-200' : 'bg-red-50 border-red-200'}`}>
                           <div>
-                            <span className="font-bold text-slate-200">5. Consumer Helpline</span>
-                            <span className="text-[10px] text-slate-400 block font-mono">Rule 6(1)(g)</span>
+                            <span className="font-bold text-slate-800">5. Consumer Helpline</span>
+                            <span className="text-[10px] text-slate-500 block font-mono">Rule 6(1)(g)</span>
                           </div>
                           {selectedPage.customerCare ? (
-                            <span className="font-bold text-emerald-400 text-[10px] max-w-xs text-right truncate">
+                            <span className="font-bold text-emerald-700 text-[10px] max-w-xs text-right truncate">
                               {selectedPage.customerCare}
                             </span>
                           ) : (
-                            <span className="font-bold text-red-400 text-[10px] bg-red-950 px-2 py-0.5 rounded border border-red-800">
+                            <span className="font-bold text-red-700 text-[10px] bg-red-100 px-2 py-0.5 rounded border border-red-300">
                               MISSING (VIOLATION)
                             </span>
                           )}
@@ -408,26 +408,26 @@ export default function BatchPdfModal({ onClose, addToast }) {
                 <>
                   {/* Stat Cards Summary */}
                   <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                    <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total PDF Pages</span>
-                      <span className="font-display font-extrabold text-2xl text-slate-900 dark:text-white">10 Pages</span>
+                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total PDF Pages</span>
+                      <span className="font-display font-extrabold text-2xl text-slate-900">10 Pages</span>
                     </div>
-                    <div className="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 flex flex-col gap-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Compliant Products</span>
-                      <span className="font-display font-extrabold text-2xl text-emerald-700 dark:text-emerald-400">{compliantCount} Pages</span>
+                    <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 flex flex-col gap-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Compliant Products</span>
+                      <span className="font-display font-extrabold text-2xl text-emerald-700">{compliantCount} Pages</span>
                     </div>
-                    <div className="p-4 rounded-xl bg-red-50/60 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 flex flex-col gap-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">Non-Compliant Items</span>
-                      <span className="font-display font-extrabold text-2xl text-red-600 dark:text-red-400">{nonCompliantCount} Pages</span>
+                    <div className="p-4 rounded-xl bg-red-50/70 border border-red-200 flex flex-col gap-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-red-700">Non-Compliant Items</span>
+                      <span className="font-display font-extrabold text-2xl text-red-700">{nonCompliantCount} Pages</span>
                     </div>
-                    <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/40 flex flex-col gap-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Scan Throughput</span>
-                      <span className="font-display font-extrabold text-2xl text-blue-700 dark:text-blue-400">38 ms / page</span>
+                    <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 flex flex-col gap-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700">Scan Throughput</span>
+                      <span className="font-display font-extrabold text-2xl text-blue-700">38 ms / page</span>
                     </div>
                   </div>
 
                   {/* Filters & Search */}
-                  <div className="flex flex-col sm:flex-row justify-between gap-3 items-center bg-slate-50 dark:bg-slate-900/40 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                  <div className="flex flex-col sm:flex-row justify-between gap-3 items-center bg-slate-50 p-3 rounded-xl border border-slate-200">
                     <div className="relative flex-1 w-full sm:w-auto">
                       <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                       <input 
@@ -435,7 +435,7 @@ export default function BatchPdfModal({ onClose, addToast }) {
                         placeholder="Search product name, page number..."
                         value={searchVal}
                         onChange={(e) => setSearchVal(e.target.value)}
-                        className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs focus:outline-none focus:border-blue-600"
+                        className="w-full bg-white border border-slate-300 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
                       />
                     </div>
 
@@ -443,7 +443,7 @@ export default function BatchPdfModal({ onClose, addToast }) {
                       <select 
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
-                        className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-blue-600"
+                        className="bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
                       >
                         <option value="all">All 10 Catalog Pages</option>
                         <option value="compliant">Compliant Only ({compliantCount})</option>
@@ -460,9 +460,9 @@ export default function BatchPdfModal({ onClose, addToast }) {
                   </div>
 
                   {/* Results Table */}
-                  <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden max-h-96 overflow-y-auto">
+                  <div className="border border-slate-200 rounded-xl overflow-hidden max-h-96 overflow-y-auto">
                     <table className="w-full text-left border-collapse text-xs">
-                      <thead className="bg-slate-100 dark:bg-slate-900 text-[10px] font-bold text-slate-500 uppercase tracking-wider sticky top-0 z-10">
+                      <thead className="bg-slate-100 text-[10px] font-bold text-slate-600 uppercase tracking-wider sticky top-0 z-10 border-b border-slate-200">
                         <tr>
                           <th className="p-3">Page #</th>
                           <th className="p-3">Product Name</th>
@@ -474,21 +474,21 @@ export default function BatchPdfModal({ onClose, addToast }) {
                           <th className="p-3 text-right">Inspect Page</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 font-medium">
+                      <tbody className="divide-y divide-slate-100 font-medium">
                         {filteredResults.map(row => (
-                          <tr key={row.page} className="hover:bg-slate-50 dark:hover:bg-slate-850/50 transition-colors">
-                            <td className="p-3 font-mono font-bold text-blue-600 dark:text-blue-400">Page {row.page}</td>
-                            <td className="p-3 font-bold text-slate-900 dark:text-slate-100">{row.name}</td>
+                          <tr key={row.page} className="hover:bg-slate-50 transition-colors">
+                            <td className="p-3 font-mono font-bold text-blue-600">Page {row.page}</td>
+                            <td className="p-3 font-bold text-slate-900">{row.name}</td>
                             <td className="p-3 font-mono font-semibold">{row.mrp}</td>
                             <td className="p-3 font-mono">{row.netQty}</td>
                             <td className="p-3 font-mono">{row.mfgDate}</td>
                             <td className="p-3">
                               {row.status === 'Compliant' ? (
-                                <span className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded text-[10px] border border-emerald-200 dark:border-emerald-900/60">
+                                <span className="inline-flex items-center gap-1 font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[10px] border border-emerald-200">
                                   <CheckCircle2 size={12} /> Compliant
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded text-[10px] border border-red-200 dark:border-red-900/60">
+                                <span className="inline-flex items-center gap-1 font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded text-[10px] border border-red-200">
                                   <XCircle size={12} /> Non-Compliant
                                 </span>
                               )}
@@ -497,7 +497,7 @@ export default function BatchPdfModal({ onClose, addToast }) {
                               {row.violations.length === 0 ? (
                                 <span className="text-slate-400 italic">None</span>
                               ) : (
-                                <ul className="list-disc pl-3 text-red-600 dark:text-red-400 flex flex-col gap-0.5">
+                                <ul className="list-disc pl-3 text-red-600 flex flex-col gap-0.5">
                                   {row.violations.map((v, idx) => (
                                     <li key={idx}>{v}</li>
                                   ))}
@@ -529,15 +529,15 @@ export default function BatchPdfModal({ onClose, addToast }) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3.5 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+        <div className="px-6 py-3.5 border-t border-slate-200 flex justify-between items-center bg-slate-50">
           <span className="text-[10px] text-slate-500 font-medium">
             10-Page PDF Catalog Batch Processor • Legal Metrology (Packaged Commodities) Rules, 2011
           </span>
           <div className="flex gap-2">
-            <button onClick={handleExportBatchCSV} className="btn bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1">
+            <button onClick={handleExportBatchCSV} className="btn bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1 transition-colors">
               <Download size={14} /> Download 10-Page Audit CSV
             </button>
-            <button onClick={onClose} className="btn border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs px-4 py-2 rounded-lg">
+            <button onClick={onClose} className="btn border border-slate-250 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs px-4 py-2 rounded-lg transition-colors">
               Close
             </button>
           </div>

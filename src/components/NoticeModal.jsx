@@ -93,16 +93,16 @@ Legal Metrology Inspector, Govt. of India
 
   return (
     <div className="modal-overlay fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[2000] flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="modal-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+      <div className="modal-card bg-white border border-slate-200 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* Modal Header */}
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+        <div className="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-500 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center">
               <ShieldAlert size={18} />
             </div>
             <div>
-              <h2 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 uppercase tracking-wider">
+              <h2 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
                 Legal Metrology Notice of Contravention
               </h2>
               <span className="text-[10px] text-slate-500">Statutory Form 1 • Section 36 of LM Act, 2009</span>
@@ -110,35 +110,35 @@ Legal Metrology Inspector, Govt. of India
           </div>
           <button 
             onClick={onClose} 
-            className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg transition-colors"
+            className="text-slate-400 hover:text-slate-600 p-1 rounded-lg transition-colors"
           >
             <X size={20} />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="modal-body p-6 overflow-y-auto flex flex-col gap-5 text-xs text-slate-700 dark:text-slate-300">
+        <div className="modal-body p-6 overflow-y-auto flex flex-col gap-5 text-xs text-slate-700">
           
           {/* Statutory Alert Banner */}
-          <div className="bg-red-50 dark:bg-red-950/20 border-l-4 border-red-600 p-3.5 rounded-r-xl flex items-start gap-3">
-            <AlertTriangle className="text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" size={18} />
+          <div className="bg-red-50 border-l-4 border-red-600 p-3.5 rounded-r-xl flex items-start gap-3">
+            <AlertTriangle className="text-red-600 flex-shrink-0 mt-0.5" size={18} />
             <div className="flex flex-col gap-0.5">
-              <span className="font-bold text-red-800 dark:text-red-400 text-xs">Official Statutory Violation Notice</span>
-              <p className="text-[11px] text-red-700 dark:text-red-300/90 leading-normal">
+              <span className="font-bold text-red-800 text-xs">Official Statutory Violation Notice</span>
+              <p className="text-[11px] text-red-700 leading-normal">
                 This notice is generated based on automated OCR field validation confirming non-compliance with the Legal Metrology (Packaged Commodities) Rules, 2011.
               </p>
             </div>
           </div>
 
           {/* Notice Parameters Form */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-50 border border-slate-200 rounded-xl p-3.5">
             <div className="flex flex-col gap-1">
               <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Notice Reference</label>
               <input 
                 type="text" 
                 readOnly 
                 value={noticeRefNo} 
-                className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded px-2.5 py-1.5 text-xs font-mono font-semibold"
+                className="bg-white border border-slate-200 text-slate-800 rounded px-2.5 py-1.5 text-xs font-mono font-semibold"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -147,7 +147,7 @@ Legal Metrology Inspector, Govt. of India
                 type="text" 
                 readOnly 
                 value={currentDate} 
-                className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded px-2.5 py-1.5 text-xs font-semibold"
+                className="bg-white border border-slate-200 text-slate-800 rounded px-2.5 py-1.5 text-xs font-semibold"
               />
             </div>
             <div className="flex flex-col gap-1 sm:col-span-2">
@@ -157,16 +157,16 @@ Legal Metrology Inspector, Govt. of India
                 value={premiseName}
                 onChange={(e) => setPremiseName(e.target.value)}
                 placeholder="Enter retail store or establishment address..."
-                className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-blue-600"
+                className="bg-white border border-slate-200 text-slate-800 rounded px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-blue-600"
               />
             </div>
           </div>
 
           {/* Formatted Notice Preview Card */}
-          <div className="border border-slate-300 dark:border-slate-700 rounded-xl p-5 bg-white dark:bg-slate-950 font-serif leading-relaxed text-slate-900 dark:text-slate-100 shadow-sm">
-            <div className="text-center pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div className="border border-slate-300 rounded-xl p-5 bg-white font-serif leading-relaxed text-slate-900 shadow-sm">
+            <div className="text-center pb-3 border-b border-slate-200">
               <span className="text-[11px] font-bold uppercase tracking-widest text-slate-500 block font-sans">Government of India • Ministry of Consumer Affairs</span>
-              <h3 className="text-sm font-extrabold uppercase mt-0.5 tracking-wider font-sans text-slate-900 dark:text-white">
+              <h3 className="text-sm font-extrabold uppercase mt-0.5 tracking-wider font-sans text-slate-900">
                 Department of Legal Metrology
               </h3>
               <span className="text-[10px] text-slate-500 font-sans">FORM-1 [Rule 6 / Section 36] • Notice of Non-Compliance</span>
@@ -183,8 +183,8 @@ Legal Metrology Inspector, Govt. of India
                 Notice is hereby served that during an official enforcement audit on <strong>{currentDate}</strong>, product samples of <strong>"{record.name || 'Crunchy Masala Chips'}"</strong> were inspected and found in direct contravention of the Legal Metrology (Packaged Commodities) Rules, 2011:
               </p>
               
-              <div className="bg-red-50/60 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-lg p-3 my-1">
-                <ol className="list-decimal pl-4 flex flex-col gap-1.5 text-[10px] font-semibold text-red-900 dark:text-red-300">
+              <div className="bg-red-50/70 border border-red-200 rounded-lg p-3 my-1">
+                <ol className="list-decimal pl-4 flex flex-col gap-1.5 text-[10px] font-semibold text-red-900">
                   {violations.map((violation, idx) => (
                     <li key={idx} className="leading-snug">
                       {violation}
@@ -200,7 +200,7 @@ Legal Metrology Inspector, Govt. of India
                 You are directed to submit your written explanation within <strong>15 days</strong> to the undersigned office.
               </p>
 
-              <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-end text-[10px]">
+              <div className="mt-4 pt-3 border-t border-slate-200 flex justify-between items-end text-[10px]">
                 <div>
                   <span className="text-slate-400 block">Digitally Verified:</span>
                   <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">METROSCAN-VERIFIED-OK</span>
@@ -216,10 +216,10 @@ Legal Metrology Inspector, Govt. of India
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="modal-footer px-6 py-3.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
+        <div className="modal-footer px-6 py-3.5 border-t border-slate-200 flex items-center justify-between bg-slate-50">
           <button 
             onClick={onClose} 
-            className="btn border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs px-4 py-2 rounded-lg"
+            className="btn border border-slate-250 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs px-4 py-2 rounded-lg transition-colors"
           >
             Close
           </button>
@@ -227,14 +227,14 @@ Legal Metrology Inspector, Govt. of India
           <div className="flex gap-2.5">
             <button 
               onClick={handleCopyText}
-              className="btn border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5"
+              className="btn border border-slate-250 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 transition-colors"
             >
               {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
               {copied ? 'Copied' : 'Copy Notice Text'}
             </button>
             <button 
               onClick={handlePrint}
-              className="btn bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm"
+              className="btn bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-colors"
             >
               <Printer size={14} /> Print / Save PDF
             </button>

@@ -84,7 +84,7 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
       {/* Header section */}
       <div className="view-header flex justify-between items-start mb-6">
         <div>
-          <h1 className="view-title font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="view-title font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
             Legal Metrology Compliance Overview
           </h1>
           <p className="view-subtitle text-slate-500 text-xs mt-1">
@@ -93,34 +93,34 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
         </div>
         <button 
           onClick={() => navigateToView('scanner')}
-          className="btn btn-primary bg-[#0f2942] hover:bg-[#183e63] text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors"
+          className="btn btn-primary bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors"
         >
-          <PlusCircle size={16} className="text-amber-400" /> New Product Scan
+          <PlusCircle size={16} className="text-amber-300" /> New Product Scan
         </button>
       </div>
 
       {/* Hero Interactive Upload Banner */}
-      <div className="hero-card bg-[#0f2942] text-white p-7 rounded-2xl grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 mb-7 shadow-xs border border-slate-800 relative overflow-hidden">
+      <div className="hero-card bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white text-slate-900 p-7 rounded-2xl grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 mb-7 shadow-xs border border-blue-200/80 relative overflow-hidden">
         <div className="hero-content flex flex-col justify-center gap-3.5 z-10">
           <div className="flex items-center gap-2">
             <span className="hero-tag bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider w-fit">
               Government of India • SIH26034
             </span>
-            <span className="text-[10px] font-mono text-blue-200">PCR 2011 Rule 6 Compliant</span>
+            <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-100/70 border border-blue-200 px-2 py-0.5 rounded">PCR 2011 Rule 6 Compliant</span>
           </div>
-          <h2 className="font-display text-xl lg:text-2xl font-bold leading-tight text-white">
+          <h2 className="font-display text-xl lg:text-2xl font-bold leading-tight text-slate-900">
             Verify Packaged Products Instantly with On-Device Tesseract.js OCR
           </h2>
-          <p className="text-slate-300 text-xs leading-relaxed max-w-lg">
+          <p className="text-slate-600 text-xs leading-relaxed max-w-lg">
             Upload packaging display panels, capture webcam snapshots, or process 100-page catalogs to automatically detect MRP, Net Quantity, Date of Manufacture, Manufacturer Address, and Consumer Care details under Section 36 of Legal Metrology Act, 2009.
           </p>
           
           <div className="hero-actions flex flex-wrap gap-2.5 mt-1">
-            <button onClick={handleUploadClick} className="btn bg-white hover:bg-slate-100 text-[#0f2942] font-bold text-xs px-4 py-2 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors">
+            <button onClick={handleUploadClick} className="btn bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-xs flex items-center gap-2 cursor-pointer transition-colors">
               <UploadCloud size={15} /> Upload Packaging Image
             </button>
-            <button onClick={() => navigateToView('scanner')} className="btn border border-white/30 text-white font-semibold text-xs px-4 py-2 rounded-lg hover:bg-white/10 flex items-center gap-2 cursor-pointer transition-colors">
-              <Camera size={15} className="text-amber-400" /> Open Scanner Console
+            <button onClick={() => navigateToView('scanner')} className="btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs px-4 py-2.5 rounded-lg flex items-center gap-2 cursor-pointer transition-colors">
+              <Camera size={15} className="text-blue-600" /> Open Scanner Console
             </button>
             <input type="file" id="real-file-input-react" className="hidden" accept="image/*,.pdf" onChange={handleFileChange} />
           </div>
@@ -128,26 +128,26 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
         <div className="hero-interactive flex items-center justify-center z-10">
           <div 
             onClick={handleUploadClick}
-            className="drag-drop-zone w-full h-40 border-2 border-dashed border-white/30 hover:border-amber-400 rounded-xl bg-white/5 hover:bg-white/10 flex flex-col items-center justify-center text-center p-4 cursor-pointer transition-colors"
+            className="drag-drop-zone w-full h-40 border-2 border-dashed border-blue-300 hover:border-blue-500 rounded-xl bg-white hover:bg-blue-50/50 flex flex-col items-center justify-center text-center p-4 cursor-pointer transition-colors"
           >
-            <UploadCloud className="drag-icon text-amber-400 mb-2" size={28} />
-            <p className="text-xs font-bold text-white">Drop packaging display panel here</p>
-            <span className="text-[10px] text-slate-300 mt-0.5">High-Resolution JPEG, PNG, WEBP, or PDF (Auto-OCR)</span>
+            <UploadCloud className="drag-icon text-blue-600 mb-2" size={28} />
+            <p className="text-xs font-bold text-slate-800">Drop packaging display panel here</p>
+            <span className="text-[10px] text-slate-500 mt-0.5">High-Resolution JPEG, PNG, WEBP, or PDF (Auto-OCR)</span>
           </div>
         </div>
       </div>
 
       {/* Demo Package Templates selector carousel */}
-      <div className="demo-selector-card bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-7 shadow-xs">
+      <div className="demo-selector-card bg-white border border-slate-200 rounded-xl p-5 mb-7 shadow-xs">
         <div className="demo-header flex items-center gap-2 mb-3">
           <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-          <h3 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+          <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
             Pre-Calibrated Test Samples (Instant Legal Metrology Rule 6 Verification)
           </h3>
         </div>
-        <div className="demo-grid grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="demo-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
-          <div onClick={() => loadDemoProduct('biscuit')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
+          <div onClick={() => loadDemoProduct('biscuit')} className="demo-product-card flex bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
             <div className="demo-product-thumbnail w-28 bg-[#fdf6e2] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight border-r border-slate-200">
               <div className="flex justify-between font-bold text-blue-800">
                 <span>GOOD DAY</span>
@@ -162,17 +162,17 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
                 <span>MRP: <strong>₹5.00</strong></span>
               </div>
             </div>
-            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1">
+            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1 bg-white">
               <div>
-                <h4 className="text-xs font-bold leading-tight">Britannia Good Day Butter Cookies</h4>
+                <h4 className="text-xs font-bold text-slate-900 leading-tight">Britannia Good Day Butter Cookies</h4>
                 <p className="text-[10px] text-slate-500 mt-1 leading-normal">Fully compliant packaging design with all mandatory declarations.</p>
               </div>
-              <div className="demo-score bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">100% Score</div>
+              <div className="demo-score bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">100% Score</div>
             </div>
           </div>
 
-          <div onClick={() => loadDemoProduct('oats')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
-            <div className="demo-product-thumbnail w-28 bg-[#fdf6e2] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight">
+          <div onClick={() => loadDemoProduct('oats')} className="demo-product-card flex bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
+            <div className="demo-product-thumbnail w-28 bg-[#fdf6e2] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight border-r border-slate-200">
               <div className="flex justify-between font-bold text-[#15803d]">
                 <span>NH-OAT-998</span>
                 <span className="bg-emerald-600 text-white px-1 rounded-[2px] text-[6px]">Compliant</span>
@@ -186,17 +186,17 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
                 <span>MRP: <strong>Rs. 145</strong></span>
               </div>
             </div>
-            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1">
+            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1 bg-white">
               <div>
-                <h4 className="text-xs font-bold leading-tight">Nature's Harvest Oats</h4>
+                <h4 className="text-xs font-bold text-slate-900 leading-tight">Nature's Harvest Oats</h4>
                 <p className="text-[10px] text-slate-500 mt-1 leading-normal">Fully compliant packaging design with all mandatory declarations.</p>
               </div>
-              <div className="demo-score bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">100% Score</div>
+              <div className="demo-score bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">100% Score</div>
             </div>
           </div>
           
-          <div onClick={() => loadDemoProduct('masala')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
-            <div className="demo-product-thumbnail w-28 bg-[#fff5eb] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight">
+          <div onClick={() => loadDemoProduct('masala')} className="demo-product-card flex bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
+            <div className="demo-product-thumbnail w-28 bg-[#fff5eb] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight border-r border-slate-200">
               <div className="flex justify-between font-bold text-red-600">
                 <span>SFM-88A</span>
                 <span className="bg-red-600 text-white px-1 rounded-[2px] text-[6px]">Non-Compliant</span>
@@ -210,17 +210,17 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
                 <span>MRP: <strong>₹ 65</strong></span>
               </div>
             </div>
-            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1">
+            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1 bg-white">
               <div>
-                <h4 className="text-xs font-bold leading-tight">Spicy Fusion Masala</h4>
+                <h4 className="text-xs font-bold text-slate-900 leading-tight">Spicy Fusion Masala</h4>
                 <p className="text-[10px] text-slate-500 mt-1 leading-normal">Infringement: Invalid 14-digit FSSAI License structure.</p>
               </div>
-              <div className="demo-score bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-500 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">75% Score</div>
+              <div className="demo-score bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">75% Score</div>
             </div>
           </div>
           
-          <div onClick={() => loadDemoProduct('cream')} className="demo-product-card flex bg-slate-50 dark:bg-[#182030]/60 border border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
-            <div className="demo-product-thumbnail w-28 bg-[#faf5ff] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight">
+          <div onClick={() => loadDemoProduct('cream')} className="demo-product-card flex bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:border-blue-600 transition-all duration-200">
+            <div className="demo-product-thumbnail w-28 bg-[#faf5ff] flex flex-col justify-between p-2 flex-shrink-0 text-[8px] font-mono leading-tight border-r border-slate-200">
               <div className="flex justify-between font-bold text-purple-700">
                 <span>GB-77B</span>
                 <span className="bg-red-600 text-white px-1 rounded-[2px] text-[6px]">Violations</span>
@@ -234,12 +234,12 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
                 <span className="text-red-500">Price: <strong>N/A</strong></span>
               </div>
             </div>
-            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1">
+            <div className="demo-product-info p-3.5 flex flex-col justify-between flex-1 bg-white">
               <div>
-                <h4 className="text-xs font-bold leading-tight">Glow Radiant Face Cream</h4>
+                <h4 className="text-xs font-bold text-slate-900 leading-tight">Glow Radiant Face Cream</h4>
                 <p className="text-[10px] text-slate-500 mt-1 leading-normal">Violations: Imperial unit (ounces) and missing MRP tag.</p>
               </div>
-              <div className="demo-score bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-500 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">50% Score</div>
+              <div className="demo-score bg-red-50 text-red-700 border border-red-200 text-[10px] font-bold px-2 py-0.5 rounded w-fit mt-3">50% Score</div>
             </div>
           </div>
 
@@ -249,62 +249,62 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
       {/* Main Statistics Cards Row */}
       <div className="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-7">
         
-        <div className="stat-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
+        <div className="stat-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
           <div className="stat-header flex justify-between items-start">
             <span className="stat-title text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total Products Scanned</span>
-            <div className="stat-icon bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-400 w-9 h-9 rounded-lg flex items-center justify-center"><Package size={18} /></div>
+            <div className="stat-icon bg-blue-50 text-blue-700 w-9 h-9 rounded-lg flex items-center justify-center"><Package size={18} /></div>
           </div>
-          <div className="stat-value font-display text-2xl font-extrabold text-slate-850 dark:text-slate-100">{totalScanned.toLocaleString()}</div>
+          <div className="stat-value font-display text-2xl font-extrabold text-slate-900">{totalScanned.toLocaleString()}</div>
           <div className="stat-footer flex items-center gap-1.5 text-[10px] text-slate-500">
             <span className="trend positive font-bold text-emerald-600 inline-flex items-center gap-0.5"><TrendingUp size={12} /> +12%</span>
             <span>from last week</span>
           </div>
-          <div className="progress-bar-container w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="progress-bar-container w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
             <div className="progress-bar-fill h-full bg-blue-700 rounded-full" style={{ width: '100%' }}></div>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
+        <div className="stat-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
           <div className="stat-header flex justify-between items-start">
             <span className="stat-title text-[10px] font-bold text-slate-500 uppercase tracking-wider">Compliant Products</span>
-            <div className="stat-icon bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-500 w-9 h-9 rounded-lg flex items-center justify-center"><CheckCircle2 size={18} /></div>
+            <div className="stat-icon bg-emerald-50 text-emerald-600 w-9 h-9 rounded-lg flex items-center justify-center"><CheckCircle2 size={18} /></div>
           </div>
-          <div className="stat-value font-display text-2xl font-extrabold text-slate-850 dark:text-slate-100">{compliantCount.toLocaleString()}</div>
+          <div className="stat-value font-display text-2xl font-extrabold text-slate-900">{compliantCount.toLocaleString()}</div>
           <div className="stat-footer flex items-center gap-1.5 text-[10px] text-slate-500">
             <span className="trend positive font-bold text-emerald-600 inline-flex items-center gap-0.5"><TrendingUp size={12} /> +14.2%</span>
             <span>compliance rate ({complianceRate}%)</span>
           </div>
-          <div className="progress-bar-container w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="progress-bar-container w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
             <div className="progress-bar-fill h-full bg-emerald-500 rounded-full" style={{ width: `${complianceRate}%` }}></div>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
+        <div className="stat-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
           <div className="stat-header flex justify-between items-start">
             <span className="stat-title text-[10px] font-bold text-slate-500 uppercase tracking-wider">Non-Compliant Products</span>
-            <div className="stat-icon bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-500 w-9 h-9 rounded-lg flex items-center justify-center"><XCircle size={18} /></div>
+            <div className="stat-icon bg-red-50 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center"><XCircle size={18} /></div>
           </div>
-          <div className="stat-value font-display text-2xl font-extrabold text-slate-850 dark:text-slate-100">{nonCompliantCount.toLocaleString()}</div>
+          <div className="stat-value font-display text-2xl font-extrabold text-slate-900">{nonCompliantCount.toLocaleString()}</div>
           <div className="stat-footer flex items-center gap-1.5 text-[10px] text-slate-500">
             <span className="trend negative font-bold text-red-600 inline-flex items-center gap-0.5"><TrendingDown size={12} /> -3.5%</span>
             <span>violations detected</span>
           </div>
-          <div className="progress-bar-container w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="progress-bar-container w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
             <div className="progress-bar-fill h-full bg-red-500 rounded-full" style={{ width: `${Math.round((nonCompliantCount / totalScanned) * 100)}%` }}></div>
           </div>
         </div>
 
-        <div className="stat-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
+        <div className="stat-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-sm transition-all duration-200">
           <div className="stat-header flex justify-between items-start">
             <span className="stat-title text-[10px] font-bold text-slate-500 uppercase tracking-wider">Pending Reviews</span>
-            <div className="stat-icon bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-500 w-9 h-9 rounded-lg flex items-center justify-center"><Clock size={18} /></div>
+            <div className="stat-icon bg-amber-50 text-amber-600 w-9 h-9 rounded-lg flex items-center justify-center"><Clock size={18} /></div>
           </div>
-          <div className="stat-value font-display text-2xl font-extrabold text-slate-850 dark:text-slate-100">{pendingReview}</div>
+          <div className="stat-value font-display text-2xl font-extrabold text-slate-900">{pendingReview}</div>
           <div className="stat-footer flex items-center gap-1.5 text-[10px] text-slate-500">
             <span className="trend neutral font-bold text-slate-500">0% change</span>
             <span>requires audit action</span>
           </div>
-          <div className="progress-bar-container w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="progress-bar-container w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
             <div className="progress-bar-fill h-full bg-amber-500 rounded-full" style={{ width: '4%' }}></div>
           </div>
         </div>
@@ -315,12 +315,12 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
       <div className="dashboard-bottom-grid grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6">
         
         {/* Timeline failures list */}
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-all duration-200">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-200">
           <div className="panel-header flex justify-between items-center mb-5">
-            <h3 className="font-display text-sm font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider">Critical Compliance Failure Log</h3>
+            <h3 className="font-display text-sm font-extrabold text-slate-800 uppercase tracking-wider">Critical Compliance Failure Log</h3>
             <button onClick={() => navigateToView('history')} className="text-btn text-xs font-semibold text-blue-600 hover:underline">View All</button>
           </div>
-          <div className="activity-timeline flex flex-col gap-4 relative pl-4 border-l-2 border-slate-200 dark:border-slate-800">
+          <div className="activity-timeline flex flex-col gap-4 relative pl-4 border-l-2 border-slate-200">
             {recentTimelineLogs.length === 0 ? (
               <p className="text-slate-500 text-xs py-8 text-center">No audits registered. Run a scan to see event history.</p>
             ) : (
@@ -339,15 +339,15 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
                 return (
                   <div key={row.id} className="timeline-item relative flex flex-col gap-1.5">
                     {/* Circle dot marker */}
-                    <div className={`timeline-marker absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-[#121826] ${isCompliant ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
+                    <div className={`timeline-marker absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white ${isCompliant ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
                     
-                    <div className="timeline-content bg-slate-50 dark:bg-[#182030]/30 border border-slate-200 dark:border-slate-800/80 rounded-xl p-3.5 flex flex-col gap-1.5">
+                    <div className="timeline-content bg-slate-50/80 border border-slate-200 rounded-xl p-3.5 flex flex-col gap-1.5">
                       <div className="timeline-meta flex justify-between items-center text-xs">
-                        <strong className="font-bold text-slate-800 dark:text-slate-200">{row.name}</strong>
+                        <strong className="font-bold text-slate-900">{row.name}</strong>
                         <span className="timeline-time text-[10px] text-slate-500">{row.date}</span>
                       </div>
-                      <p className="timeline-desc text-[11px] text-slate-500 leading-normal">{descText}</p>
-                      <span className={`tag text-[9px] font-bold px-2 py-0.5 rounded w-fit ${isCompliant ? 'bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500' : 'bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-500'}`}>
+                      <p className="timeline-desc text-[11px] text-slate-600 leading-normal">{descText}</p>
+                      <span className={`tag text-[9px] font-bold px-2 py-0.5 rounded w-fit ${isCompliant ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
                         {isCompliant ? 'Compliant' : `${row.violationsCount} Violations`}
                       </span>
                     </div>
@@ -359,9 +359,9 @@ export default function Dashboard({ loadDemoProduct, navigateToView, historyList
         </div>
 
         {/* Failure bar breakdown chart */}
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-all duration-200">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-200">
           <div className="panel-header flex justify-between items-center mb-5">
-            <h3 className="font-display text-sm font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider">Common Compliance Failure Breakdown</h3>
+            <h3 className="font-display text-sm font-extrabold text-slate-800 uppercase tracking-wider">Common Compliance Failure Breakdown</h3>
             <HelpCircle className="text-slate-400 w-5 h-5 flex-shrink-0" title="Most common reasons why packages fail Legal Metrology checks" />
           </div>
           <div className="quick-chart-container h-60 relative flex items-center justify-center">

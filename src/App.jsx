@@ -218,7 +218,7 @@ export default function App() {
                 </span>
               </div>
               <span className="text-[10px] text-slate-500 font-semibold mt-0.5">
-                Legal Metrology Enforcement Portal â€¢ PCR 2011 Rule 6
+                Legal Metrology Enforcement Portal • PCR 2011 Rule 6
               </span>
             </div>
           </div>

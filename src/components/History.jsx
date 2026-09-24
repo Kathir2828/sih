@@ -53,17 +53,17 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
         </div>
         <button 
           onClick={handleExportCSV}
-          className="btn border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2"
+          className="btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2 shadow-xs transition-colors cursor-pointer"
         >
           <Download size={14} /> Export All to CSV
         </button>
       </div>
 
       {/* Filter and search bar controls */}
-      <div className="filters-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 mb-6 shadow-sm">
+      <div className="filters-card bg-white border border-slate-200 rounded-2xl p-5 mb-6 shadow-sm">
         <div className="filters-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="form-group flex flex-col gap-1.5">
-            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Search Product / Brand</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Search Product / Brand</label>
             <div className="input-icon-wrapper relative flex items-center">
               <Search className="input-icon absolute left-3.5 text-slate-400 w-4 h-4 pointer-events-none" />
               <input 
@@ -71,18 +71,18 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
                 id="history-search-react"
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
-                className="form-control w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-10 pr-3.5 py-1.5 text-xs focus:outline-none focus:border-blue-600 focus:bg-white" 
+                className="form-control w-full bg-white border border-slate-300 rounded-lg pl-10 pr-3.5 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" 
                 placeholder="Search name, brand, bar..."
               />
             </div>
           </div>
           
           <div className="form-group flex flex-col gap-1.5">
-            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Compliance Status</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Compliance Status</label>
             <select 
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="form-select w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-lg px-3.5 py-1.5 text-xs focus:outline-none focus:border-blue-600"
+              className="form-select w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
             >
               <option value="all">All Statuses</option>
               <option value="compliant">Compliant (100%)</option>
@@ -91,11 +91,11 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
           </div>
 
           <div className="form-group flex flex-col gap-1.5">
-            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Product Category</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Product Category</label>
             <select 
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="form-select w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-lg px-3.5 py-1.5 text-xs focus:outline-none focus:border-blue-600"
+              className="form-select w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
             >
               <option value="all">All Categories</option>
               <option value="food">Food & Beverages</option>
@@ -105,11 +105,11 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
           </div>
 
           <div className="form-group flex flex-col gap-1.5">
-            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Time Period</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Time Period</label>
             <select 
               value={filterPeriod}
               onChange={(e) => setFilterPeriod(e.target.value)}
-              className="form-select w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-lg px-3.5 py-1.5 text-xs focus:outline-none focus:border-blue-600"
+              className="form-select w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all"
             >
               <option value="all">All Time</option>
               <option value="today">Today</option>
@@ -121,18 +121,18 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
       </div>
 
       {/* History table panel */}
-      <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm transition-all duration-200 overflow-hidden p-0">
+      <div className="panel-card bg-white border border-slate-200 rounded-2xl shadow-sm transition-all duration-200 overflow-hidden p-0">
         <div className="table-responsive w-full overflow-x-auto">
           <table className="history-table w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="bg-slate-50 dark:bg-slate-900/30 border-b border-slate-200 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                <th className="px-5 py-3">Product</th>
-                <th className="px-5 py-3">Category</th>
-                <th className="px-5 py-3">Scan Date</th>
-                <th className="px-5 py-3">Compliance Score</th>
-                <th className="px-5 py-3">Violations Found</th>
-                <th className="px-5 py-3">Status</th>
-                <th className="px-5 py-3">Action</th>
+              <tr className="bg-slate-100/90 border-b border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-600">
+                <th className="px-5 py-3.5">Product</th>
+                <th className="px-5 py-3.5">Category</th>
+                <th className="px-5 py-3.5">Scan Date</th>
+                <th className="px-5 py-3.5">Compliance Score</th>
+                <th className="px-5 py-3.5">Violations Found</th>
+                <th className="px-5 py-3.5">Status</th>
+                <th className="px-5 py-3.5">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -144,32 +144,32 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
                 filteredList.map(row => {
                   const isCompliant = row.score === 100;
                   return (
-                    <tr key={row.id} className="border-b border-slate-200 dark:border-slate-800/80 last:border-b-0 hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
+                    <tr key={row.id} className="border-b border-slate-150 last:border-b-0 hover:bg-blue-50/30 transition-colors">
                       <td className="px-5 py-4">
                         <div className="table-product-cell flex items-center gap-3">
                           <div className={`table-thumbnail w-9 h-9 rounded bg-[#fdf6e2] flex items-center justify-center flex-shrink-0 text-[7px] font-mono leading-none border select-none ${row.productKey === 'oats' ? 'bg-[#fdf6e2] border-emerald-500/20 text-[#15803d]' : (row.productKey === 'masala' ? 'bg-[#fff5eb] border-red-500/20 text-[#b91c1c]' : 'bg-[#faf5ff] border-purple-500/20 text-[#7c3aed]')}`}>
                             {row.productKey.toUpperCase()}
                           </div>
-                          <strong className="font-bold text-slate-800 dark:text-slate-200">{row.name}</strong>
+                          <strong className="font-bold text-slate-900">{row.name}</strong>
                         </div>
                       </td>
-                      <td className="px-5 py-4 text-slate-500">{row.category}</td>
-                      <td className="px-5 py-4 text-slate-500">{row.date}</td>
+                      <td className="px-5 py-4 text-slate-600">{row.category}</td>
+                      <td className="px-5 py-4 text-slate-600">{row.date}</td>
                       <td className="px-5 py-4">
-                        <span className={`score-badge text-[10px] font-bold px-2 py-0.5 rounded-full ${isCompliant ? 'bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500' : (row.score >= 70 ? 'bg-amber-50 dark:bg-amber-950/20 text-amber-600 dark:text-amber-500' : 'bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-500')}`}>
+                        <span className={`score-badge text-[10px] font-bold px-2 py-0.5 rounded-full ${isCompliant ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : (row.score >= 70 ? 'bg-amber-50 text-amber-700 border border-amber-200' : 'bg-red-50 text-red-700 border border-red-200')}`}>
                           {row.score}%
                         </span>
                       </td>
-                      <td className="px-5 py-4 font-bold text-slate-650 dark:text-slate-400">{row.violationsCount} violations</td>
+                      <td className="px-5 py-4 font-bold text-slate-700">{row.violationsCount} violations</td>
                       <td className="px-5 py-4">
-                        <span className={`status-badge text-[10px] font-bold px-2.5 py-0.5 rounded ${isCompliant ? 'bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-500' : 'bg-red-50 dark:bg-red-950/20 text-red-650 dark:text-red-400'}`}>
+                        <span className={`status-badge text-[10px] font-bold px-2.5 py-0.5 rounded ${isCompliant ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-red-100 text-red-800 border border-red-300'}`}>
                           {row.status}
                         </span>
                       </td>
                       <td className="px-5 py-4">
                         <button 
                           onClick={() => viewReportRecord(row)}
-                          className="btn border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 px-2 py-0.5 rounded text-[10px] font-bold"
+                          className="btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3 py-1 rounded text-[10px] font-bold shadow-2xs transition-colors"
                         >
                           View Report
                         </button>
@@ -183,12 +183,12 @@ export default function History({ historyList, setHistoryList, viewReportRecord,
         </div>
         
         {/* Pagination bar */}
-        <div className="table-pagination flex justify-between items-center px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121826] text-xs">
+        <div className="table-pagination flex justify-between items-center px-6 py-4 border-t border-slate-200 bg-white text-xs">
           <span className="pagination-info text-slate-500">Showing <strong>1</strong> to <strong>{filteredList.length}</strong> of <strong>{filteredList.length}</strong> records</span>
           <div className="pagination-controls flex gap-2">
-            <button className="btn border border-slate-250 dark:border-slate-800 px-2.5 py-1 rounded text-[10px] disabled:opacity-40" disabled><ChevronLeft size={14} /> Previous</button>
+            <button className="btn border border-slate-250 px-2.5 py-1 rounded text-[10px] disabled:opacity-40" disabled><ChevronLeft size={14} /> Previous</button>
             <button className="btn bg-blue-700 text-white font-bold px-3 py-1 rounded text-[10px]">1</button>
-            <button className="btn border border-slate-250 dark:border-slate-800 px-2.5 py-1 rounded text-[10px] disabled:opacity-40" disabled>Next <ChevronRight size={14} /></button>
+            <button className="btn border border-slate-250 px-2.5 py-1 rounded text-[10px] disabled:opacity-40" disabled>Next <ChevronRight size={14} /></button>
           </div>
         </div>
       </div>

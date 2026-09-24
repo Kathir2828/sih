@@ -156,7 +156,7 @@ export default function Analytics({ historyList, darkTheme }) {
         </div>
         <button 
           onClick={refreshCharts}
-          className="btn border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2"
+          className="btn border border-slate-250 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2 shadow-2xs transition-colors"
         >
           <RefreshCw size={14} /> Refresh Charts
         </button>
@@ -164,9 +164,9 @@ export default function Analytics({ historyList, darkTheme }) {
 
       <div className="analytics-grid grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col">
           <div className="panel-header flex justify-between items-center mb-4">
-            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100">Compliant vs Non-Compliant Products</h3>
+            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">Compliant vs Non-Compliant Products</h3>
             <PieChart className="text-blue-700 w-5 h-5 flex-shrink-0" />
           </div>
           <div className="chart-canvas-container h-64 relative">
@@ -174,9 +174,9 @@ export default function Analytics({ historyList, darkTheme }) {
           </div>
         </div>
 
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col">
           <div className="panel-header flex justify-between items-center mb-4">
-            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100">Violations Categorized by Commodity Type</h3>
+            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">Violations Categorized by Commodity Type</h3>
             <BarChart3 className="text-emerald-500 w-5 h-5 flex-shrink-0" />
           </div>
           <div className="chart-canvas-container h-64 relative">
@@ -184,9 +184,9 @@ export default function Analytics({ historyList, darkTheme }) {
           </div>
         </div>
 
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col">
           <div className="panel-header flex justify-between items-center mb-4">
-            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100">Daily Scans & Detection Rates (August 2026)</h3>
+            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">Daily Scans & Detection Rates (August 2026)</h3>
             <TrendingUp className="text-blue-600 w-5 h-5 flex-shrink-0" />
           </div>
           <div className="chart-canvas-container h-64 relative">
@@ -194,9 +194,9 @@ export default function Analytics({ historyList, darkTheme }) {
           </div>
         </div>
 
-        <div className="panel-card bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col">
+        <div className="panel-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col">
           <div className="panel-header flex justify-between items-center mb-4">
-            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100">Metrology Rule Failure Rates (Percentage)</h3>
+            <h3 className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">Metrology Rule Failure Rates (Percentage)</h3>
             <Activity className="text-red-500 w-5 h-5 flex-shrink-0" />
           </div>
           <div className="chart-canvas-container h-64 relative">
